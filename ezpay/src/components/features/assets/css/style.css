@@ -1,0 +1,273 @@
+@font-face {
+    font-family: "YekanBakhLight";
+    src: url("../fonts/YekanBakhLight.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "YekanBakhThin";
+    src: url("../fonts/YekanBakhThin.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "YekanBakhMedium";
+    src: url("../fonts/YekanBakhMedium.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "YekanBakhRegular";
+    src: url("../fonts/YekanBakhRegular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "YekanBakhBold";
+    src: url("../fonts/YekanBakhBold.ttf") format("truetype");
+  }
+
+.fontWeightLight{
+    font-family: "YekanBakhLight";
+}  
+.fontWeightThin{
+    font-family: "YekanBakhThin";
+}
+.fontWeightMedium{
+    font-family: "YekanBakhMedium";
+}
+.fontWeightRegular{
+    font-family: "YekanBakhRegular";
+}
+.fontWeightBold{
+    font-family: "YekanBakhBold";
+}
+body{
+    direction: rtl;
+    background-color: #F6F8FB !important;
+    
+}
+.headerContainer{
+    background-color: #F6F8FB;
+}
+.logoImg{
+    width: 170px;
+    height: 87px;
+}
+.headerRow{
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.ta-right{
+    text-align: right;
+}
+.ta-left{
+    text-align: left;
+}
+.downloadBtn{
+    background-color: #162B75 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    width: 200px;
+    height: 45px;
+
+}
+.downloadBtn:hover{
+    background-color: #F26522 !important;
+}
+.whiteBox{
+    background: #FFFFFF;
+box-shadow: 0px 0px 30px rgba(22, 43, 117, 0.15);
+padding: 150px 200px;
+border-radius: 20px;
+margin-top: 50px;
+}
+.innerWhiteBox{
+    background: #FFFFFF;
+box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15);
+border-radius: 20px;
+height: 243px;
+width: 243px;
+padding: 40px;
+position: relative;
+}
+.innerWhiteBox p{
+    font-family: "YekanBakhBold";
+    color: #707070;
+    text-align: center;
+    position: absolute;
+    bottom: 0.5%;
+    font-size: 25px;
+    width: 100%;
+right: 0px;
+}
+#Icon1{
+    Width: 134.18px;
+    Height :98.18px;
+}
+#Icon2{
+    Width :112.09px;
+    Height :143.18px;
+}
+#Icon3{
+    Width :152.18px;
+    Height: 125.18px;
+}
+.questionContainer{
+    margin-top: 150px;
+}
+.questionTitle{
+    font-family: "YekanBakhMedium";
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+.accardionTitle{
+    color: #707070;
+    margin-bottom: 0px;
+    margin-right: 30px;
+}
+.accordion__button{
+    display: flex;
+    align-items: center;
+    background: #fff !important;
+
+border-radius: 10px;
+border: none;
+}
+.accordion__button::before {
+    display: inline-block;
+    content: '';
+    height: 10px;
+    width: 10px;
+    margin-right: 12px;
+    border-top: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    border-right:none !important;
+    border-bottom: none !important;
+    color: #F26522;
+  }
+  .accordion{
+      border: none !important;
+      border-radius: 10px;
+  }
+  .accordion__item{
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(22, 43, 117, 0.2);
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  .accardionText{
+      font-family: "YekanBakhRegular";
+      color: #707070;
+      text-align: justify;
+      line-height: 30px;
+  }
+  .accordion__panel{
+      padding: 10px 30px !important;
+  }
+  .FooterContainer{
+      background-color: #162B75;
+      display: flex;
+      padding: 50px 70px !important;
+      justify-content: flex-end;
+      margin-top: 50px;
+  }
+  .footerIconBox{
+      background-color: #fff;
+      width: 155px;
+      height: 155px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      margin-right: 30px;
+  }
+  .footerIconBox img{
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+  }
+  .w60{
+      width: 60% !important;
+  }
+  .pd30{
+      padding: 30px !important;
+  }
+  .react-tabs__tab--selected{
+    background: #FF4296 !important;
+    color: #fff !important;
+    border-radius: 30px !important;
+
+  }
+  .react-tabs__tab{
+      font-family: "YekanBakhBold" !important;
+      box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+border-radius: 30px;
+width: 180px;
+height: 45px;
+padding: 10px 20px !important;
+margin-right: 50px;
+margin-left: 50px;
+color: #707070;
+font-size: 20px;
+  }
+  .react-tabs__tab-list{
+      padding-bottom: 20px !important;
+      border-bottom:1px solid rgba(0, 0, 0, 0.1) !important;
+  }
+  .rowTitleDiv p{
+      font-family:"YekanBakhMedium";
+      margin-bottom: 0px;
+      color: #707070;
+  }
+  .pdtop30{
+      padding-top: 30px;
+      
+  }
+  .pdbottom30{
+      padding-bottom: 30px;
+  }
+  .tabBox{
+      padding: 10px 55px;
+      box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+      background-color: #fff;
+      border-radius: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+  }
+  .tabBoxActive{
+      font-family: "YekanBakhBold";
+      margin-bottom: 0px;
+      color: #162B75;
+      font-size: 20px;
+  }
+  .tabBoxText{
+      font-family: "YekanBakhMedium";
+      margin-bottom: 0px;
+      color: #707070;
+      font-size: 20px;
+  }
+  .borderBottom{
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .tabBox img{
+      width: 30px;
+      height: 30px;
+      margin-left: 20px;
+  }
+  .pdLR15{
+      padding-right: 15px !important;
+      padding-left: 15px !important;
+  }
+  .rowTitleDiv{
+      width: 300px;
+      text-align: right;
+  }
+  .payBtn{
+      background-color: #FF4296 !important;
+      color: #fff !important;
+      font-family: "YekanBakhBold";
+      border: none !important;
+      border-radius: 50px !important;
+      width: 300px;
+      height: 45px;
+      font-size: 20px !important;
+      margin-top: 10px;
+  }
