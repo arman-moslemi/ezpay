@@ -223,7 +223,7 @@ font-size: 20px;
       padding-bottom: 30px;
   }
   .tabBox{
-      padding: 10px 55px;
+      padding: 10px;
       box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
       background-color: #fff;
       border-radius: 10px;
@@ -231,6 +231,9 @@ font-size: 20px;
       margin-left: 10px;
       display: flex;
       align-items: center;
+     
+text-align: center;
+justify-content: center;
   }
   .tabBoxActive{
       font-family: "YekanBakhBold";
@@ -270,4 +273,84 @@ font-size: 20px;
       height: 45px;
       font-size: 20px !important;
       margin-top: 10px;
+  }
+  .pdCustom{
+      padding: 15px !important;
+  }
+  .pdCustom input{
+      border: none !important;
+      text-align: left;
+      margin-left: 10px;
+  }
+  .pdCustom input:focus-visible{
+      border: 1px solid #f4f4f4 !important;
+  }
+  .w200{
+    width: 200px;
+    
+  }
+  .w127{
+      width: 127px;
+  }
+  .tabBoxActiveMain{
+    box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.5) !important;
+  }
+  .fontUnset{
+      font-family: unset !important;
+  }
+  .w97{
+      width: 97px;
+  }
+  .chargeSlider{
+      width: 100% !important;
+      padding: 15px !important;
+  }
+  .chargeSliderDiv{
+     
+  }
+  .chargeSliderBox{
+    width: 150px;
+    height: auto;
+    background: #fff;
+    box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+    border-radius: 10px;
+    padding:15px 5px;
+  }
+  .margin2{
+      margin-right: 2px !important;
+      margin-left: 2px !important;
+  }
+  .pd0{
+      padding-right: 0px !important;
+      padding-left: 0px !important;
+  }
+  .boxTitle{
+      font-family: "YekanBakhRegular";
+      color: #707070;
+      font-size: 17px;
+      margin-bottom: 5px !important;
+  }
+  .boxPrice{
+      font-family: "YekanBakhBold";
+      color: #707070;
+      font-size: 17px;
+  }
+  .activeTitle{
+      color: #162B75 !important;
+  }
+  .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+      bottom: -4px !important;
+  }
+  .swiper-button-next::after{
+    background-size: cover;
+    background-image:url('../img/left.png') !important;
+  
+  }
+  .swiper-button-prev::after{
+    background-size: cover;
+    background-image:url('../img/right.png') !important;
+  
+  }
+  .swiper-button-next, .swiper-button-prev{
+      color: transparent !important;
   }
