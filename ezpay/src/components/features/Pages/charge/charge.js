@@ -29,9 +29,56 @@ const [amount,setAmount]=useState(0)
 const [direct,setDirect]=useState("DIRECT")
 const [charge,setCharge]=useState("20000")
 
-const dargah=()=>{
+const dargahCharge=()=>{
+  console.log(document.getElementById("phone").value)
+  var ss=document.getElementById("phone").value
+  localStorage.setItem("opr",operator)
+  localStorage.setItem("direct",direct)
+  localStorage.setItem("phone",ss)
+  localStorage.setItem("type","charge")
+  
+    const axios = require("axios");
+  
+    axios
+    .post(apiUrl + "dargah",{
+      Username:37068,
+    Password:6182,
+    amount:charge,
+    cellNumber:ss,
+       chargeType:direct,
+       Type:operator,
+       payType:"شارژ",
+    })
+  .then(function (response) {
+  if (response.data.result == "true") {
+  
+  // alert("موفقیت آمیز")
+  localStorage.setItem("fact",response.data.FactorNumber)
+
+  let userObj = JSON.parse(response.data.Data);
+  console.log(77)
+  console.log(userObj)
+  console.log(userObj.paymentLink)
+  window.open(userObj.paymentLink);
+  }
+  else{
+    let userObj = JSON.parse(response.data.message);
+  console.log(userObj)
+    alert(userObj.description)
+  }})
+  .catch(function (error) {
+  console.log(error);
+  });
+  }
+  
+const dargahNet=()=>{
   console.log(document.getElementById("phone2").value)
   var ss=document.getElementById("phone2").value
+  localStorage.setItem("opr",operator)
+localStorage.setItem("bundle",bundle)
+localStorage.setItem("phone",ss)
+localStorage.setItem("type","net")
+
     const axios = require("axios");
   
     axios
@@ -39,7 +86,10 @@ const dargah=()=>{
       Username:37068,
     Password:6182,
     amount:amount,
-    cellNumber:ss
+    cellNumber:ss,
+       bundleId:bundle,
+       payType:"بسته"
+
     })
   .then(function (response) {
   if (response.data.result == "true") {
@@ -47,8 +97,11 @@ const dargah=()=>{
   // alert("موفقیت آمیز")
   
   // console.log(userObj?.bundles
-    // console.log(JSON.stringify(response.data.Data)?.bundles)
-  
+  localStorage.setItem("fact",response.data.FactorNumber)
+
+  let userObj = JSON.parse(response.data.Data);
+  window.open(userObj.paymentLink);
+
   }
   else{
     let userObj = JSON.parse(response.data.message);
@@ -64,65 +117,67 @@ console.log(document.getElementById("phone2").value)
 var ss=document.getElementById("phone2").value
   const axios = require("axios");
 
-  axios
-  .post(apiUrl + "buy",{
-    Username:37068,
-  Password:6182,
-  Type:operator,
-  bundleId:bundle,
-  amount:amount,
-  cellNumber:ss
-  })
-.then(function (response) {
-if (response.data.result == "true") {
+//   axios
+//   .post(apiUrl + "buy",{
+//     Username:37068,
+//   Password:6182,
+//   Type:operator,
+//   bundleId:bundle,
+//   amount:amount,
+//   cellNumber:ss
+//   })
+// .then(function (response) {
+// if (response.data.result == "true") {
 
-alert("موفقیت آمیز")
+// alert("موفقیت آمیز")
 
-// console.log(userObj?.bundles
-  // console.log(JSON.stringify(response.data.Data)?.bundles)
+// // console.log(userObj?.bundles
+//   // console.log(JSON.stringify(response.data.Data)?.bundles)
 
-}
-else{
-  let userObj = JSON.parse(response.data.message);
-console.log(userObj)
-  alert(userObj.description)
-}})
-.catch(function (error) {
-console.log(error);
-});
+// }
+// else{
+//   let userObj = JSON.parse(response.data.message);
+// console.log(userObj)
+//   alert(userObj.description)
+// }})
+// .catch(function (error) {
+// console.log(error);
+// });
 }
 const buyCharge=()=>{
   const axios = require("axios");
   console.log(document.getElementById("phone").value)
   var ss=document.getElementById("phone").value
-  axios
-  .post(apiUrl + "buyCharge",{
-    Username:37068,
-  Password:6182,
-  Type:operator,
-  amount:charge,
-  cellNumber:ss,
-  chargeType:direct
-  })
-  // .get(apiUrl + "Gettest")
-.then(function (response) {
-if (response.data.result == "true") {
+  localStorage.setItem("opr",operator)
+localStorage.setItem("direct",direct)
+localStorage.setItem("phone",ss)
+//   axios
+//   .post(apiUrl + "buyCharge",{
+//     Username:37068,
+//   Password:6182,
+//   Type:operator,
+//   amount:charge,
+//   cellNumber:ss,
+//   chargeType:direct
+//   })
+// .then(function (response) {
+// if (response.data.result == "true") {
 
-alert("موفقیت آمیز")
+// alert("موفقیت آمیز")
 
-// console.log(userObj?.bundles
-  // console.log(JSON.stringify(response.data.Data)?.bundles)
+// // console.log(userObj?.bundles
+//   // console.log(JSON.stringify(response.data.Data)?.bundles)
 
-}
-else{
-  let userObj = JSON.parse(response.data.message);
+// }
+// else{
+//   let userObj = JSON.parse(response.data.message);
 
-  alert(userObj.description)
+//   alert(userObj.description)
 
-}})
-.catch(function (error) {
-console.log(error);
-});
+// }})
+// .catch(function (error) {
+// console.log(error);
+// });
 }
 const mainSlider=()=>{
   const axios = require("axios");
@@ -335,7 +390,8 @@ useEffect(()=>{
     </div>
   </div>
   <div className="d-flex justify-content-end">
-    <Button onClick={()=>buyCharge()} className="payBtn">
+    {/* <Button onClick={()=>buyCharge()} className="payBtn"> */}
+    <Button onClick={()=>dargahCharge()} className="payBtn">
       پرداخت
     </Button>
   </div>
@@ -455,7 +511,8 @@ useEffect(()=>{
   </div>
   
   <div className="d-flex justify-content-end">
-    <Button onClick={()=>buyInternet()} className="payBtn">
+    {/* <Button onClick={()=>buyInternet()} className="payBtn"> */}
+    <Button onClick={()=>dargahNet()} className="payBtn">
       پرداخت
     </Button>
   </div>
