@@ -20,14 +20,14 @@ const ChargeInner = () => {
     <Container className="chargePageContainer">
     <div className="whiteBox pd30">
     <Tabs>
-    <TabList>
+    <TabList className="over">
       <Tab>شارژ سیم کارت</Tab>
       <Tab>بسته اینترنت</Tab>
       <Tab>پرداخت قبض</Tab>
     </TabList>
 
     <TabPanel>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
         <div className="rowTitleDiv">
           <p>
             یکی از روش های شارژ را انتخاب کنید : 
@@ -46,7 +46,7 @@ const ChargeInner = () => {
         </div>
         </div>
       </div>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
         <div className="rowTitleDiv">
           <p>
            شماره تلفن همراه خود را وارد کنید : 
@@ -61,13 +61,13 @@ const ChargeInner = () => {
         </div>
         </div>
       </div>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
         <div className="rowTitleDiv">
           <p>
             در صورت ترابرد اپراتور را تغییر دهید : 
           </p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex over">
         <div className="tabBox w200">
           <img src={Irancell}/>
           <p className="tabBoxText">
@@ -94,13 +94,13 @@ const ChargeInner = () => {
         </div>
         </div>
       </div>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
         <div className="rowTitleDiv">
           <p>
            مبلغ شارژ را انتخاب کنید : 
           </p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex over">
         <div className="tabBox pdLR15 w127 tabBoxActiveMain">
           <p className="tabBoxActive">
             1 هزارتومان
@@ -133,7 +133,7 @@ const ChargeInner = () => {
         </div>
         </div>
       </div>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 d-res-block">
         <div className="rowTitleDiv">
           <p>
            نوع شارژ را انتخاب کنید : 
@@ -160,13 +160,13 @@ const ChargeInner = () => {
     </TabPanel>
     <TabPanel>
     
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
         <div className="rowTitleDiv">
           <p>
            شماره تلفن همراه خود را وارد کنید : 
           </p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex over">
         
         <div className="tabBox pdCustom">
         <input placeholder=""/>
@@ -175,13 +175,13 @@ const ChargeInner = () => {
         </div>
         </div>
       </div>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
         <div className="rowTitleDiv">
           <p>
             در صورت ترابرد اپراتور را تغییر دهید : 
           </p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex over">
         <div className="tabBox w200">
           <img src={Irancell}/>
           <p className="tabBoxText">
@@ -208,13 +208,13 @@ const ChargeInner = () => {
         </div>
         </div>
       </div>
-      <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+      <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
         <div className="rowTitleDiv">
           <p>
            نوع سیم کارت خود را انتخاب کنید : 
           </p>
         </div>
-        <div className="d-flex">
+        <div className="d-flex over">
         <div className="tabBox w200 tabBoxActiveMain">
           <p className="tabBoxActive">
             دائمی
@@ -242,8 +242,9 @@ const ChargeInner = () => {
         <ChargeSlider/>
        </Col>
      <Col md={5} className="pd0 d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
-     
-       <div className="tabBox w97 margin2">
+  <div className="d-flex over">
+       
+  <div className="tabBox w97 margin2">
           <p className="tabBoxText">
           ساعتی
           </p>
@@ -269,6 +270,7 @@ const ChargeInner = () => {
           </p>
         </div>
       
+  </div>
      </Col>
       </div>
       
