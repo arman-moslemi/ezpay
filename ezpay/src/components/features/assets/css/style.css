@@ -342,15 +342,138 @@ justify-content: center;
       bottom: -4px !important;
   }
   .swiper-button-next::after{
-    background-size: cover;
+    background-size: contain;
     background-image:url('../img/left.png') !important;
-  
+    background-repeat: no-repeat;
+    top: 10px;
+position: absolute;
   }
   .swiper-button-prev::after{
-    background-size: cover;
+    background-size: contain;
     background-image:url('../img/right.png') !important;
-  
+    background-repeat: no-repeat;
+    top: 10px;
+position: absolute;
   }
   .swiper-button-next, .swiper-button-prev{
       color: transparent !important;
   }
+  .swiper-pagination-bullet-active{
+      background: #707070 !important;
+  }
+  .d-des-flex{
+      display: flex;
+  }
+  @media screen and (max-width:1390px){
+    .innerWhiteBox{
+        width: 200px;
+    }
+  }
+  @media screen and (max-width:1200px){
+    .innerWhiteBox{
+        width: 200px;
+    }
+    #Icon1{
+        width: 100px;
+        height: auto;
+    }
+    #Icon3{
+        width: 120px;
+        height: auto;
+    }
+    #Icon2{
+        width: 100px;
+        height: auto;
+    }
+    .whiteBox{
+        padding:120px;
+        }
+        .d-res-block{
+            display: block !important;
+        }
+        .rowTitleDiv{
+            margin-bottom: 10px;
+        }
+  }
+
+  @media screen and (max-width:1000px){
+      
+  .chargePageContainer {
+      width: 100% !important;
+      max-width: 100% !important;
+  }
+  .headerRow{
+      width: 100% !important;
+      max-width: 100% !important;
+  }
+  .headerContainer{
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .questionContainer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .react-tabs__tab{
+      margin-right: 10px;
+      margin-left: 10px;
+  }
+  }
+  @media screen and (max-width:890px){
+
+  .innerWhiteBox{
+      width: 100%;
+  }
+  .whiteBox{
+    padding:50px;
+    }
+    .headerRow .col-md-6{
+        width: 50% !important;
+    }
+    .headerRow .col-md-6{
+        width: 50% !important;
+    }
+    .innerWhiteBox{
+        margin-bottom: 15px;
+    }
+    .footerIconBox{
+        height: 120px;
+        width: 120px;
+    }
+    .tabBoxText{
+        font-size: 15px;
+    }
+    .tabBoxActive{
+        font-size: 15px;
+    }
+    .d-res-block2{
+        display: block !important;
+    }
+}
+@media screen and (max-width:700px){
+    .react-tabs__tab{
+        font-size: 15px;
+        width: 125px;
+        padding: 10px;
+    }
+    .over{
+        width: 100%;
+overflow-x: scroll;
+white-space: nowrap;
+padding: 20px 0px;
+    }
+    .chargeSliderBox{
+        width: 100px;
+    }
+}
+@media screen and (max-width:500px){
+    .chargeSliderBox{
+        width: 80px;
+    }
+    .boxTitle{
+        font-size: 12px;
+    }
+    .boxPrice{
+        font-size: 12px;
+    }
+}
