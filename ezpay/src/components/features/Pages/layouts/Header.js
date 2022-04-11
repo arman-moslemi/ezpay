@@ -1,12 +1,14 @@
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import Logo from "../../assets/img/logo.png";
+
 const Header = () => {
 
   return (
     <>
      
-    
+
+
      <Container className="headerContainer">
      <div className="row headerRow">
        <Col md={6} className="ta-right">

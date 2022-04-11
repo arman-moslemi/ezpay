@@ -5,11 +5,11 @@ import ChargeInner from '../components/features/Pages/charge/chargeInner';
 import Success from '../components/features/Pages/charge/Succes';
 const MainRoutes = (props) => {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="/charge">
 			<Routes>
 				<Route
 					exact
-					path='/charge'
+					path='/'
 					name='charge'
 					element={<Charge/>}
 				/></Routes>
