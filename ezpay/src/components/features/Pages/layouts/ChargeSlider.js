@@ -37,7 +37,7 @@ export default ({data,setBundle,setAmount,bundle}) => {
                          از 2 تا 7 صبح
                      </p> */}
                      <p className='boxPrice activeTitle'>
-                         {item.amount} تومان
+                         {item.amount} ریال
                      </p>
                     </div>
                    </SwiperSlide>

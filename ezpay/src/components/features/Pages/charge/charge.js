@@ -27,7 +27,8 @@ const [time,setTime]=useState(0)
 const [bundle,setBundle]=useState(0)
 const [amount,setAmount]=useState(0)
 const [direct,setDirect]=useState("DIRECT")
-const [charge,setCharge]=useState("20000")
+const [charge,setCharge]=useState("")
+const [vtp,setVtp]=useState(0)
 
 const dargahCharge=()=>{
   console.log(document.getElementById("phone").value)
@@ -36,7 +37,8 @@ const dargahCharge=()=>{
   localStorage.setItem("direct",direct)
   localStorage.setItem("phone",ss)
   localStorage.setItem("type","charge")
-  
+  localStorage.setItem("vtp",vtp)
+
     const axios = require("axios");
   
     axios
@@ -227,13 +229,13 @@ useEffect(()=>{
 
 <div className="whiteBox">
 <div className="row boxRow">
-  <Col onClick={()=>setPage(2)} md={4}>
-   <div className="innerWhiteBox">
+  <Col onClick={()=>setPage(2)} md={6} >
+   <div className="innerWhiteBox" style={{float:'left'}}>
      <img src={Icon2} id="Icon2"/>
      <p>شارژ سیم کارت</p>
    </div>
   </Col>
-  <Col onClick={()=>setPage(2)} md={4}>
+  <Col onClick={()=>setPage(2)} md={6}>
    <div className="innerWhiteBox">
    <img src={Icon3}  id="Icon3"/>
    <p>
@@ -241,14 +243,14 @@ useEffect(()=>{
    </p>
    </div>
   </Col>
-  <Col onClick={()=>setPage(2)} md={4}>
+  {/* <Col onClick={()=>setPage(2)} md={4}>
    <div className="innerWhiteBox">
    <img src={Icon1}  id="Icon1"/>
    <p>
      پرداخت قبض
    </p>
    </div>
-  </Col>
+  </Col> */}
 </div>
 </div>
 
@@ -257,14 +259,14 @@ useEffect(()=>{
 
 <div className="whiteBox pd30">
 <Tabs>
-<TabList>
+<TabList  className="over">
   <Tab>شارژ سیم کارت</Tab>
   <Tab>بسته اینترنت</Tab>
-  <Tab>پرداخت قبض</Tab>
+  {/* <Tab>پرداخت قبض</Tab> */}
 </TabList>
 
 <TabPanel>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+<div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
       <p>
         یکی از روش های شارژ را انتخاب کنید : 
@@ -272,18 +274,18 @@ useEffect(()=>{
     </div>
     <div className="d-flex">
     <div onClick={()=>setDirect("DIRECT")} className={direct=="DIRECT"?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
-      <p className="tabBoxActive">
+    <p className={direct=="DIRECT"?"tabBoxActive":"tabBoxText"}>
         شارژ مستقیم
       </p>
     </div>
-    <div onClick={()=>setDirect("UNDIRECT")} className={direct=="UNDIRECT"?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
-      <p className="tabBoxText">
+    <div onClick={()=>setDirect("DESIRE")} className={direct=="DESIRE"?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+      <p className={direct=="DESIRE"?"tabBoxActive":"tabBoxText"}>
        دریافت کد شارژ
       </p>
     </div>
     </div>
   </div>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
       <p>
        شماره تلفن همراه خود را وارد کنید : 
@@ -298,13 +300,13 @@ useEffect(()=>{
     </div>
     </div>
   </div>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
     <div className="rowTitleDiv">
       <p>
         در صورت ترابرد اپراتور را تغییر دهید : 
       </p>
     </div>
-    <div className="d-flex">
+    <div className="d-flex over">
     <div onClick={()=>setOperator(0)} className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
       <img src={Irancell}/>
       <p className="tabBoxText">
@@ -331,46 +333,68 @@ useEffect(()=>{
     </div>
     </div>
   </div>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
     <div className="rowTitleDiv">
       <p>
        مبلغ شارژ را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex">
+    <div className="d-flex over">
     {/* <div className="tabBox pdLR15 w127 tabBoxActiveMain">
       <p className="tabBoxActive">
         1 هزارتومان
       </p>
     </div> */}
-    <div onClick={()=>setCharge("20000")} className={charge=="20000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-      <p className="tabBoxText">
+    <div onClick={()=>{setCharge("20000");
+    operator==0?
+    setVtp(28)
+    :operator==1?
+    setVtp(23)
+    :
+   setVtp(50)}} className={charge=="20000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    <p className={charge=="20000"?"tabBoxActive":"tabBoxText"}>
        2 هزارتومان
       </p>
     </div>
-    <div onClick={()=>setCharge("50000")} className={charge=="50000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-      <p className="tabBoxActive">
+    <div onClick={()=>{setCharge("50000"); operator==0?
+    setVtp(29)
+    :operator==1?
+    setVtp(22)
+    :setVtp(51)}} className={charge=="50000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+      <p className={charge=="50000"?"tabBoxActive":"tabBoxText"}>
         5 هزارتومان
       </p>
     </div>
-    <div onClick={()=>setCharge("100000")} className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-      <p className="tabBoxText">
+    <div onClick={()=>{setCharge("100000"); operator==0?
+    setVtp(30)
+    :operator==1?
+    setVtp(10)
+    :setVtp(52)}} className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    <p className={charge=="100000"?"tabBoxActive":"tabBoxText"}>
        10 هزارتومان
       </p>
     </div>
-    <div onClick={()=>setCharge("200000")} className={charge=="200000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-      <p className="tabBoxActive">
+    <div onClick={()=>{setCharge("200000"); operator==0?
+    setVtp(31)
+    :operator==1?
+    setVtp(5)
+    :setVtp(53)}} className={charge=="200000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    <p className={charge=="200000"?"tabBoxActive":"tabBoxText"}>
         20 هزارتومان
       </p>
     </div>
-    <div onClick={()=>setCharge("500000")} className={charge=="500000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-      <p className="tabBoxText">
+    {/* <div onClick={()=>{setCharge("500000"); operator==0?
+    setVtp(29)
+    :operator==1?
+    setVtp(22)
+    :setVtp(51)}} className={charge=="500000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    <p className={charge=="500000"?"tabBoxActive":"tabBoxText"}>
        50 هزارتومان
       </p>
-    </div>
+    </div> */}
     </div>
   </div>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30">
+  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 d-res-block">
     <div className="rowTitleDiv">
       <p>
        نوع شارژ را انتخاب کنید : 
@@ -398,13 +422,13 @@ useEffect(()=>{
 </TabPanel>
 <TabPanel>
 
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+<div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
       <p>
        شماره تلفن همراه خود را وارد کنید : 
       </p>
     </div>
-    <div className="d-flex">
+    <div className="d-flex over">
     
     <div className="tabBox pdCustom">
     <input id="phone2"    />
@@ -413,13 +437,13 @@ useEffect(()=>{
     </div>
     </div>
   </div>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
     <div className="rowTitleDiv">
       <p>
         در صورت ترابرد اپراتور را تغییر دهید : 
       </p>
     </div>
-    <div className="d-flex">
+    <div className="d-flex over">
     <div onClick={()=>setOperator(0)} className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Irancell}/>
       <p className="tabBoxText">
@@ -446,13 +470,13 @@ useEffect(()=>{
     </div>
     </div>
   </div>
-  <div className="d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
       <p>
        نوع سیم کارت خود را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex">
+    <div className="d-flex over">
     <div onClick={()=>setSime(0)} className={sim==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <p className="tabBoxActive">
         دائمی
@@ -479,7 +503,7 @@ useEffect(()=>{
    <Col md={7} className="chargeSliderDiv pd0">
     <ChargeSlider bundle={bundle} setAmount={setAmount} setBundle={setBundle} data={time==0?box.daily:time==1?box.weekly:time==2?box.monthly:time==3?box.annual:null}/>
    </Col>
- <Col md={5} className="pd0 d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+   <Col md={5} className="pd0 d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
  
    {/* <div onClick={()=>setTime(0)} onCa className="tabBox w97 margin2">
       <p className="tabBoxText">
@@ -517,9 +541,9 @@ useEffect(()=>{
     </Button>
   </div>
 </TabPanel>
-<TabPanel>
+{/* <TabPanel>
   <h2>Any content 2</h2>
-</TabPanel>
+</TabPanel> */}
 </Tabs>
    </div>
 

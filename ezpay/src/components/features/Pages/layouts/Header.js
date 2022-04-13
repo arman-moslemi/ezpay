@@ -12,10 +12,10 @@ const Header = () => {
      <Container className="headerContainer">
      <div className="row headerRow">
        <Col md={6} className="ta-right">
-        <img src={Logo} className="logoImg"/>
+        <img src={Logo} onClick={()=>window.location.href="https://ezpay.ir/charge"} className="logoImg"/>
        </Col>
        <Col md={6} className="ta-left">
-        <Button className="downloadBtn fontWeightBold">
+        <Button onClick={()=>window.location.href="https://app.ezpay.ir"} className="downloadBtn fontWeightBold">
           اپلیکیشن ایزی پی
         </Button>
        </Col>

@@ -21,6 +21,8 @@ const Success = () => {
     console.log(FactorNumber);
     console.log(statusCode);
     console.log(statusDesc);
+    const [pin,setPin]=useState("")
+
     const buyInternet=()=>{
    
           const axios = require("axios");
@@ -61,38 +63,75 @@ const Success = () => {
         const buyCharge=()=>{
           const axios = require("axios");
           console.log(1548)
-          axios
-          .post(apiUrl + "buyCharge",{
-            Username:37068,
-          Password:6182,
-          Type:  localStorage.getItem("opr"),
-          amount:amount,
-          cellNumber:localStorage.getItem("phone"),
-          chargeType:localStorage.getItem("direct"),
-          fact:localStorage.getItem("fact"),
-          realFact:FactorNumber
-          })
-        .then(function (response) {
-        if (response.data.result == "true") {
-            localStorage.setItem("opr","")
-            localStorage.setItem("direct","")
-            localStorage.setItem("phone","")
-            localStorage.setItem("type","")
-        alert("موفقیت آمیز")
-        
-        // console.log(userObj?.bundles
-          // console.log(JSON.stringify(response.data.Data)?.bundles)
-        
-        }
-        else{
-          let userObj = JSON.parse(response.data.message);
-        
-          alert(userObj.description)
-        
-        }})
-        .catch(function (error) {
-        console.log(error);
-        });
+          if(localStorage.getItem("direct")!="DESIRE"){
+            axios
+            .post(apiUrl + "buyCharge",{
+              Username:37068,
+            Password:6182,
+            Type:  localStorage.getItem("opr"),
+            amount:amount,
+            cellNumber:localStorage.getItem("phone"),
+            chargeType:localStorage.getItem("direct"),
+            fact:localStorage.getItem("fact"),
+            realFact:FactorNumber
+            })
+          .then(function (response) {
+          if (response.data.result == "true") {
+              localStorage.setItem("opr","")
+              localStorage.setItem("direct","")
+              localStorage.setItem("phone","")
+              localStorage.setItem("type","")
+          alert("موفقیت آمیز")
+          
+          // console.log(userObj?.bundles
+            // console.log(JSON.stringify(response.data.Data)?.bundles)
+          
+          }
+          else{
+            let userObj = JSON.parse(response.data.message);
+          
+            alert(userObj.description)
+          
+          }})
+          .catch(function (error) {
+          console.log(error);
+          });
+          }
+          else{
+            axios
+            .post(apiUrl + "buyCodeCharge",{
+              Username:37068,
+            Password:6182,
+            Type:  localStorage.getItem("opr"),
+            vtpcode:localStorage.getItem("vtp"),
+         
+            })
+          .then(function (response) {
+          if (response.data.result == "true") {
+              localStorage.setItem("opr","")
+              localStorage.setItem("direct","")
+              localStorage.setItem("phone","")
+              localStorage.setItem("type","")
+              localStorage.setItem("vtp","")
+          alert("موفقیت آمیز")
+          
+          // console.log(userObj?.bundles
+            console.log(555555)
+            console.log(JSON.parse(response.data.Data))
+            console.log(JSON.parse(response.data.Data)?.pin)
+          setPin(JSON.parse(response.data.Data)?.pin)
+          }
+          else{
+            let userObj = JSON.parse(response.data.Data);
+          
+            alert(userObj.description)
+          
+          }})
+          .catch(function (error) {
+          console.log(error);
+          });
+          }
+       
         }
         useEffect(()=>{
             console.log(localStorage.getItem("type"))
@@ -112,8 +151,12 @@ const Success = () => {
         <Container className="chargePageContainer">
             {
                 statusCode==0?
-
-                <p>تراکنش موفقیت آمیز بود</p>
+pin?
+                <p>تراکنش موفقیت آمیز بود
+                  کد:{pin}
+                </p>
+                :
+                <p>تراکنش موفقیت آمیز بود </p>
                 :
                 <p>تراکنش لغو شد</p>
 
