@@ -160,7 +160,7 @@ border: none;
       padding: 10px 30px !important;
   }
   .FooterContainer{
-      background-color: #162B75;
+    background: linear-gradient(180deg, #162B75 0%, #2743A8 47.19%, #162B75 100%);
       display: flex;
       padding: 50px 70px !important;
       justify-content: flex-end;
@@ -480,4 +480,57 @@ padding: 20px 0px;
 .text-link {
     color: inherit;
     text-decoration: inherit;
+}
+.footerFirstCol{
+    width: 35%;
+    text-align: right;
+}
+.footerSecondCol{
+    width: 30%;
+    text-align: center;
+}
+.footerThirdCol{
+    width: 20% ;
+}
+.footerFourthCol{
+    width: 15%;
+}
+.footerTitle{
+    font-family:'YekanBakhBold' ;
+    color: #fff;
+    font-size: 18px;
+}
+.footerDetail{
+    font-family: 'YekanBakhThin';
+    color: #fff;
+    font-size: 13px;
+    margin-bottom: 0px;
+    margin-right: 15px;
+}
+.footerFirstCol div{
+ 
+    margin-bottom: 15px;
+}
+.footerIcon{
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+    margin-left: 8px;
+    
+}
+.dlIcon{
+    width: 130px;
+    margin-bottom: 10px;
+}
+.simIcon{
+    width: 87px;
+}
+.mr10{
+    margin-right: -20px;
+}
+.mr25{
+    margin-right: -25px;
+}
+.mt5{
+    margin-top: 5%;
 }
