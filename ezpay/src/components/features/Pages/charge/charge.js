@@ -16,6 +16,8 @@ import Phone from "../../assets/icon/Phone";
 import ChargeSlider from "../layouts/ChargeSlider";
 import { useEffect, useState ,useRef} from "react";
 import { apiUrl } from "../../../../commons/inFormTypes";
+import { Link } from "react-router-dom";
+
 const Charge = () => {
 const [page,setPage]=useState(1)
 const [phone,setPhone]=useState("")
@@ -29,6 +31,7 @@ const [amount,setAmount]=useState(0)
 const [direct,setDirect]=useState("DIRECT")
 const [charge,setCharge]=useState("")
 const [vtp,setVtp]=useState(0)
+const [chargeType,setChargeType]=useState(0)
 
 const dargahCharge=()=>{
   console.log(document.getElementById("phone").value)
@@ -38,14 +41,19 @@ const dargahCharge=()=>{
   localStorage.setItem("phone",ss)
   localStorage.setItem("type","charge")
   localStorage.setItem("vtp",vtp)
-
+  localStorage.setItem("amount",charge)
+console.log(89456)
+console.log(charge)
+console.log(operator)
     const axios = require("axios");
   
     axios
     .post(apiUrl + "dargah",{
       Username:37068,
     Password:6182,
-    amount:charge,
+    // amount:charge,
+    amount:(parseInt( charge)*98)/100,
+
     cellNumber:ss,
        chargeType:direct,
        Type:operator,
@@ -80,6 +88,7 @@ const dargahNet=()=>{
 localStorage.setItem("bundle",bundle)
 localStorage.setItem("phone",ss)
 localStorage.setItem("type","net")
+localStorage.setItem("amount",amount)
 
     const axios = require("axios");
   
@@ -87,7 +96,7 @@ localStorage.setItem("type","net")
     .post(apiUrl + "dargah",{
       Username:37068,
     Password:6182,
-    amount:amount,
+    amount:(parseInt( amount)*98)/100,
     cellNumber:ss,
        bundleId:bundle,
        payType:"بسته"
@@ -273,19 +282,28 @@ useEffect(()=>{
       </p>
     </div>
     <div className="d-flex">
-    <div onClick={()=>setDirect("DIRECT")} className={direct=="DIRECT"?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
+      <Link onClick={()=>setDirect("DIRECT")} to={""}className='text-link'>
+    <div  className={direct=="DIRECT"?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
     <p className={direct=="DIRECT"?"tabBoxActive":"tabBoxText"}>
         شارژ مستقیم
       </p>
     </div>
-    <div onClick={()=>setDirect("DESIRE")} className={direct=="DESIRE"?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+      </Link>
+      <Link onClick={()=>setDirect("DESIRE")}  to={""}className='text-link'>
+
+    <div className={direct=="DESIRE"?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <p className={direct=="DESIRE"?"tabBoxActive":"tabBoxText"}>
        دریافت کد شارژ
       </p>
     </div>
+    </Link>
     </div>
   </div>
-  <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
+  {
+    direct=="DESIRE"?
+null
+    :
+    <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
       <p>
        شماره تلفن همراه خود را وارد کنید : 
@@ -300,6 +318,8 @@ useEffect(()=>{
     </div>
     </div>
   </div>
+  }
+ 
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
     <div className="rowTitleDiv">
       <p>
@@ -307,30 +327,40 @@ useEffect(()=>{
       </p>
     </div>
     <div className="d-flex over">
-    <div onClick={()=>setOperator(0)} className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
+    <Link onClick={()=>setOperator(0)}  to={""}className='text-link'>
+    <div  className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
       <img src={Irancell}/>
-      <p className="tabBoxText">
+      <p className={operator==0?"tabBoxActive":"tabBoxText"}>
         ایرانسل
       </p>
     </div>
-    <div onClick={()=>setOperator(1)} className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    </Link>
+    <Link onClick={()=>setOperator(1)} to={""}className='text-link'>
+    <div  className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Mci}/>
-      <p className="tabBoxActive">
+      <p className={operator==1?"tabBoxActive":"tabBoxText"}>
        همراه اول
       </p>
     </div>
-    <div onClick={()=>setOperator(2)} className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    </Link>
+    <Link onClick={()=>setOperator(2)}  to={""}className='text-link'>
+
+    <div  className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Rightel}/>
-      <p className="tabBoxText">
+      <p className={operator==2?"tabBoxActive":"tabBoxText"}>
         رایتل
       </p>
     </div>
-    <div onClick={()=>setOperator(3)} className={operator==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    </Link>
+    <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
+
+    <div  className={operator==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Taliya}/>
-      <p className="tabBoxText">
+      <p className={operator==3?"tabBoxActive":"tabBoxText"}>
         تالیا
       </p>
     </div>
+    </Link>
     </div>
   </div>
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
@@ -345,44 +375,56 @@ useEffect(()=>{
         1 هزارتومان
       </p>
     </div> */}
-    <div onClick={()=>{setCharge("20000");
+        <Link onClick={()=>{setCharge("20000");
     operator==0?
     setVtp(28)
     :operator==1?
     setVtp(23)
     :
-   setVtp(50)}} className={charge=="20000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+   setVtp(50)}}  to={""}className='text-link'>
+
+    <div  className={charge=="20000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
     <p className={charge=="20000"?"tabBoxActive":"tabBoxText"}>
        2 هزارتومان
       </p>
     </div>
-    <div onClick={()=>{setCharge("50000"); operator==0?
+    </Link>
+    <Link onClick={()=>{setCharge("50000"); operator==0?
     setVtp(29)
     :operator==1?
     setVtp(22)
-    :setVtp(51)}} className={charge=="50000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    :setVtp(51)}} to={""}className='text-link'>
+
+    <div  className={charge=="50000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
       <p className={charge=="50000"?"tabBoxActive":"tabBoxText"}>
         5 هزارتومان
       </p>
     </div>
-    <div onClick={()=>{setCharge("100000"); operator==0?
+</Link>
+<Link onClick={()=>{setCharge("100000"); operator==0?
     setVtp(30)
     :operator==1?
     setVtp(10)
-    :setVtp(52)}} className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    :setVtp(52)}} to={""}className='text-link'>
+
+    <div  className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
     <p className={charge=="100000"?"tabBoxActive":"tabBoxText"}>
        10 هزارتومان
       </p>
     </div>
-    <div onClick={()=>{setCharge("200000"); operator==0?
+    </Link>
+    <Link onClick={()=>{setCharge("200000"); operator==0?
     setVtp(31)
     :operator==1?
     setVtp(5)
-    :setVtp(53)}} className={charge=="200000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    :setVtp(53)}}  to={""}className='text-link'>
+
+    <div  className={charge=="200000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
     <p className={charge=="200000"?"tabBoxActive":"tabBoxText"}>
         20 هزارتومان
       </p>
     </div>
+    </Link>
     {/* <div onClick={()=>{setCharge("500000"); operator==0?
     setVtp(29)
     :operator==1?
@@ -400,17 +442,23 @@ useEffect(()=>{
        نوع شارژ را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex">
-    <div className="tabBox w200 tabBoxActiveMain">
-      <p className="tabBoxActive">
+    <div className="d-flex over">
+    <Link onClick={()=>setChargeType(0)}  to={""}className='text-link'>
+
+    <div className={chargeType==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <p className={chargeType==0?"tabBoxActive":"tabBoxText"}>
         شارژ عادی
       </p>
     </div>
-    <div className="tabBox w200">
-      <p className="tabBoxText">
+    </Link>
+    <Link onClick={()=>setChargeType(1)}  to={""}className='text-link'>
+
+    <div className={chargeType==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+      <p className={chargeType==1?"tabBoxActive":"tabBoxText"}>
        شارژ شگفت انگیز
       </p>
     </div>
+    </Link>
     </div>
   </div>
   <div className="d-flex justify-content-end">
@@ -444,30 +492,40 @@ useEffect(()=>{
       </p>
     </div>
     <div className="d-flex over">
-    <div onClick={()=>setOperator(0)} className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <Link onClick={()=>setOperator(0)}  to={""}className='text-link'>
+    <div  className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
       <img src={Irancell}/>
-      <p className="tabBoxText">
+      <p className={operator==0?"tabBoxActive":"tabBoxText"}>
         ایرانسل
       </p>
     </div>
-    <div onClick={()=>setOperator(1)} className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    </Link>
+    <Link onClick={()=>setOperator(1)} to={""}className='text-link'>
+    <div  className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Mci}/>
-      <p className="tabBoxActive">
+      <p className={operator==1?"tabBoxActive":"tabBoxText"}>
        همراه اول
       </p>
     </div>
-    <div onClick={()=>setOperator(2)} className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    </Link>
+    <Link onClick={()=>setOperator(2)}  to={""}className='text-link'>
+
+    <div  className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Rightel}/>
-      <p className="tabBoxText">
+      <p className={operator==2?"tabBoxActive":"tabBoxText"}>
         رایتل
       </p>
     </div>
-    <div  onClick={()=>setOperator(3)} className={operator==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    </Link>
+    <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
+
+    <div  className={operator==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Taliya}/>
-      <p className="tabBoxText">
+      <p className={operator==3?"tabBoxActive":"tabBoxText"}>
         تالیا
       </p>
     </div>
+    </Link>
     </div>
   </div>
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
@@ -477,26 +535,38 @@ useEffect(()=>{
       </p>
     </div>
     <div className="d-flex over">
-    <div onClick={()=>setSime(0)} className={sim==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
-      <p className="tabBoxActive">
+    <Link onClick={()=>setSime(0)}  to={""}className='text-link'>
+
+    <div  className={sim==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <p className={sim==0?"tabBoxActive":"tabBoxText"}>
         دائمی
       </p>
     </div>
-    <div onClick={()=>setSime(1)} className={sim==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
-      <p className="tabBoxText">
+    </Link>
+    <Link onClick={()=>setSime(1)}  to={""}className='text-link'>
+
+    <div  className={sim==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+      <p className={sim==1?"tabBoxActive":"tabBoxText"}>
        اعتباری
       </p>
     </div>
-    <div onClick={()=>setSime(2)} className={sim==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
-      <p className="tabBoxText">
+    </Link>
+    <Link onClick={()=>setSime(2)}  to={""}className='text-link'>
+
+    <div  className={sim==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <p className={sim==2?"tabBoxActive":"tabBoxText"}>
        دیتا
       </p>
     </div>
-    <div onClick={()=>setSime(3)} className={sim==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
-      <p className="tabBoxText fontUnset">
+    </Link>
+    <Link onClick={()=>setSime(3)}  to={""}className='text-link'>
+
+    <div  className={sim==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <p className={sim==3?"tabBoxActive":"tabBoxText"}>
        TD-LTE
       </p>
     </div>
+    </Link>
     </div>
   </div>
   <div className="row d-flex justify-content-start align-items-center pdtop30 pdbottom30">
@@ -510,26 +580,38 @@ useEffect(()=>{
       ساعتی
       </p>
     </div> */}
-    <div onClick={()=>setTime(0)} className={time==0?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-      <p className="tabBoxText">
+        <Link onClick={()=>setTime(0)}  to={""}className='text-link'>
+
+    <div className={time==0?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+    <p className={time==0?"tabBoxActive":"tabBoxText"}>
       روزانه
       </p>
     </div>
-    <div onClick={()=>setTime(1)}  className={time==1?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-      <p className="tabBoxText">
+    </Link>
+    <Link onClick={()=>setTime(1)}  to={""}className='text-link'>
+
+    <div  className={time==1?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+    <p className={time==1?"tabBoxActive":"tabBoxText"}>
      هفتگی
       </p>
     </div>
-    <div onClick={()=>setTime(2)}  className={time==2?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-      <p className="tabBoxText">
+    </Link>
+    <Link onClick={()=>setTime(2)}  to={""}className='text-link'>
+
+    <div   className={time==2?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+    <p className={time==2?"tabBoxActive":"tabBoxText"}>
       ماهانه
       </p>
     </div>
-    <div onClick={()=>setTime(3)}  className={time==3?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-      <p className="tabBoxText">
+    </Link>
+    <Link onClick={()=>setTime(3)}  to={""}className='text-link'>
+
+    <div  className={time==3?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+    <p className={time==3?"tabBoxActive":"tabBoxText"}>
       بلند مدت
       </p>
     </div>
+    </Link>
   
  </Col>
   </div>

@@ -477,3 +477,7 @@ padding: 20px 0px;
         font-size: 12px;
     }
 }
+.text-link {
+    color: inherit;
+    text-decoration: inherit;
+}

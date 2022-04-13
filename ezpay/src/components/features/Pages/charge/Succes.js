@@ -34,7 +34,7 @@ const Success = () => {
           Type:  localStorage.getItem("opr")
           ,
           bundleId:localStorage.getItem("bundle"),
-          amount:amount,
+          amount:localStorage.getItem("amount"),
           cellNumber:localStorage.getItem("phone"),
           fact:localStorage.getItem("fact"),
           realFact:FactorNumber
@@ -45,6 +45,7 @@ const Success = () => {
             localStorage.setItem("bundle","")
             localStorage.setItem("phone","")
             localStorage.setItem("type","")
+            localStorage.setItem("amount","")
         alert("موفقیت آمیز")
         
         // console.log(userObj?.bundles
@@ -69,7 +70,7 @@ const Success = () => {
               Username:37068,
             Password:6182,
             Type:  localStorage.getItem("opr"),
-            amount:amount,
+            amount:localStorage.getItem("amount"),
             cellNumber:localStorage.getItem("phone"),
             chargeType:localStorage.getItem("direct"),
             fact:localStorage.getItem("fact"),
@@ -81,6 +82,7 @@ const Success = () => {
               localStorage.setItem("direct","")
               localStorage.setItem("phone","")
               localStorage.setItem("type","")
+              localStorage.setItem("amount","")
           alert("موفقیت آمیز")
           
           // console.log(userObj?.bundles
