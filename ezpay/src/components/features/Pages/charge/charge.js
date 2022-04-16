@@ -245,7 +245,7 @@ useEffect(()=>{
   شارژ سیم‌کارت و بسته اینترنت
 با تخفیف همیشگی
   </p>
-<div style={{display:'flex'}}>
+<div className="mRow">
 <div onClick={()=>setPage(2)}>
    <div className="innerWhiteBox">
      <img src={Icon2} id="Icon2"/>
@@ -288,13 +288,13 @@ useEffect(()=>{
 </TabList>
 
 <TabPanel >
-<div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
+<div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
     <div className="rowTitleDiv">
       <p>
         یکی از روش های شارژ را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex">
+    <div className="d-flex over">
       <Link onClick={()=>setDirect("DIRECT")} to={""}className='text-link'>
     <div  className={direct=="DIRECT"?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
     <p className={direct=="DIRECT"?"tabBoxActive":"tabBoxText"}>

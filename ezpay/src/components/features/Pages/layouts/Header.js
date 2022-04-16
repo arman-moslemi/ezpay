@@ -10,7 +10,8 @@ const Header = () => {
 
 
      <Container className="headerContainer">
-     <div className="row headerRow">
+  <div className="headerRow">
+  <div className="row">
        <Col md={2} className="ta-right">
         <img src={Logo} onClick={()=>window.location.href="https://ezpay.ir/charge"} className="logoImg"/>
        </Col>
@@ -23,7 +24,23 @@ const Header = () => {
         </Button>
        </Col>
      </div>
-     
+  </div>
+     <div className="headerRowRes">
+     <div className="row" style={{display:'flex',alignItems:'center'}}>
+       <Col md={6} className="ta-right">
+        <img src={Logo} onClick={()=>window.location.href="https://ezpay.ir/charge"} className="logoImg"/>
+       </Col>
+       
+       <Col md={6} className="ta-left">
+        <Button onClick={()=>window.location.href="https://app.ezpay.ir"} className="downloadBtn fontWeightBold">
+          اپلیکیشن ایزی پی
+        </Button>
+       </Col>
+       <Col md={12} >
+          <img src={Banner} className="banner"/>
+       </Col>
+     </div>
+     </div>
       </Container>
   
     </>

@@ -61,7 +61,7 @@ body{
     background-color: #162B75 !important;
     border: none !important;
     border-radius: 10px !important;
-    width: 200px;
+    width: 100%;
     height: 45px;
 
 }
@@ -370,29 +370,25 @@ position: absolute;
   .d-des-flex{
       display: flex;
   }
-  @media screen and (max-width:1390px){
-    .innerWhiteBox{
-        width: 200px;
-    }
+  .desktopFooter{
+      display: block;
   }
+  .responsiveFooter{
+      display: none;
+  }
+  @media screen and (max-width:1400px){
+     .desktopFooter{
+         display: none !important;
+     }
+     .responsiveFooter{
+         display: block !important;
+     }
+  }
+
   @media screen and (max-width:1200px){
-    .innerWhiteBox{
-        width: 200px;
-    }
-    #Icon1{
-        width: 100px;
-        height: auto;
-    }
-    #Icon3{
-        width: 120px;
-        height: auto;
-    }
-    #Icon2{
-        width: 100px;
-        height: auto;
-    }
+  
     .whiteBox{
-        padding:120px;
+        padding:80px;
         }
         .d-res-block{
             display: block !important;
@@ -425,10 +421,26 @@ position: absolute;
       margin-left: 10px;
   }
   }
-  @media screen and (max-width:890px){
+  .headerRowRes{
+      display: none;
 
-  .innerWhiteBox{
-      width: 100%;
+  }
+  @media screen and (max-width:890px){
+      .headerContainer {
+          padding: 15px 35px;
+      }
+    .banner{
+        width: 100% !important;
+        margin-top:5%;
+    }
+      .headerRowRes .col-md-6{
+          width: 50% !important;
+      }
+.headerRowRes{
+    display: block !important;
+}
+  .headerRow{
+      display: none !important;
   }
   .whiteBox{
     padding:50px;
@@ -455,8 +467,37 @@ position: absolute;
     .d-res-block2{
         display: block !important;
     }
+    .colText{
+        font-size: 35px !important;
+    }
+    .innerWhiteBox{
+        width: 130px;
+    }
+}
+@media screen and (max-width:790px){
+    .FooterContainer{
+        padding: 50px 20px !important;
+    }
+    .dlIcon{
+        width: 100px !important;
+    }
+    .mRow{
+        justify-content: center;
+        display: flex;
+    }
+    .leftImg{
+        width: 80% !important;
+        margin-top: 10%;
+    }
+}
+.mRow{
+    display: flex;
+   
 }
 @media screen and (max-width:700px){
+    .footerTitle{
+        font-size: 14px !important;
+    }
     .react-tabs__tab{
         font-size: 15px;
         width: 125px;
@@ -472,7 +513,23 @@ padding: 20px 0px;
         width: 100px;
     }
 }
+@media screen and (max-width:550px){
+    .dlIcon{
+        width: 100% !important;
+    }
+}
 @media screen and (max-width:500px){
+    .footerIcon{
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .logoImg{
+        width: 80% !important;
+        height: auto !important;
+    }
+    .downloadBtn{
+        width: 100% !important;
+    }
     .chargeSliderBox{
         width: 80px;
     }
@@ -481,6 +538,14 @@ padding: 20px 0px;
     }
     .boxPrice{
         font-size: 12px;
+    }
+    .colText{
+        font-size: 25px !important;;
+    }
+}
+@media screen and (max-width:450px){
+    .dlIcon{
+        width: 100% !important;
     }
 }
 .text-link {
@@ -558,4 +623,22 @@ padding: 20px 0px;
 }
 .leftImg{
     width: 100%;
+}
+.resFooterFirstCol{
+    width: 40%;
+}
+.resFooterSecondCol{
+    margin-right: 5%;
+    width: 55%;
+}
+.resFooterThirdCol{
+    width: 40%;
+}
+.resFooterFourthCol{
+    margin-right: 5%;
+    width: 55%;
+}
+.shareRow{
+    display: flex;
+
 }
