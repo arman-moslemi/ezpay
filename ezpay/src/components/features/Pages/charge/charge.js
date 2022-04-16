@@ -13,6 +13,7 @@ import Taliya from "../../assets/img/taliya.png";
 import Mci from "../../assets/img/mci.png";
 import Rightel from "../../assets/img/rightel.png";
 import Phone from "../../assets/icon/Phone";
+import LeftImg from "../../assets/img/leftImg.png";
 import ChargeSlider from "../layouts/ChargeSlider";
 import { useEffect, useState ,useRef} from "react";
 import { apiUrl } from "../../../../commons/inFormTypes";
@@ -239,20 +240,31 @@ useEffect(()=>{
 
 <div className="whiteBox">
 <div className="row boxRow">
-  <Col onClick={()=>setPage(2)} md={6} >
-   <div className="innerWhiteBox" style={{float:'left'}}>
+<Col md={6}>
+  <p className="colText">
+  شارژ سیم‌کارت و بسته اینترنت
+با تخفیف همیشگی
+  </p>
+<div style={{display:'flex'}}>
+<div onClick={()=>setPage(2)}>
+   <div className="innerWhiteBox">
      <img src={Icon2} id="Icon2"/>
      <p>شارژ سیم کارت</p>
    </div>
-  </Col>
-  <Col onClick={()=>setPage(2)} md={6}>
+  </div>
+  <div onClick={()=>setPage(2)}>
    <div className="innerWhiteBox">
    <img src={Icon3}  id="Icon3"/>
    <p>
      بسته اینترنت
    </p>
    </div>
-  </Col>
+  </div>
+</div>
+</Col>
+<Col md={6}>
+  <img src={LeftImg} className="leftImg"/>
+</Col>
   {/* <Col onClick={()=>setPage(2)} md={4}>
    <div className="innerWhiteBox">
    <img src={Icon1}  id="Icon1"/>
