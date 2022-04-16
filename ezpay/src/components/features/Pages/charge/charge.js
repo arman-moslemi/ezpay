@@ -34,11 +34,12 @@ const [vtp,setVtp]=useState(0)
 const [chargeType,setChargeType]=useState(0)
 
 const dargahCharge=()=>{
-  console.log(document.getElementById("phone").value)
-  var ss=document.getElementById("phone").value
+  console.log(document.getElementById("phone")?.value)
+  var ss=""
+   ss=direct=="DIRECT"?document.getElementById("phone")?.value:"";
   localStorage.setItem("opr",operator)
   localStorage.setItem("direct",direct)
-  localStorage.setItem("phone",ss)
+  localStorage.setItem("phone",direct=="DIRECT"?ss:"code")
   localStorage.setItem("type","charge")
   localStorage.setItem("vtp",vtp)
   localStorage.setItem("amount",charge)
@@ -233,7 +234,7 @@ useEffect(()=>{
     <>
      
     <Header/>
-    <Container className="chargePageContainer">
+    <Container  className="chargePageContainer">
 {page==1?
 
 <div className="whiteBox">
@@ -274,7 +275,7 @@ useEffect(()=>{
   {/* <Tab>پرداخت قبض</Tab> */}
 </TabList>
 
-<TabPanel>
+<TabPanel >
 <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
       <p>
@@ -582,7 +583,7 @@ null
     </div> */}
         <Link onClick={()=>setTime(0)}  to={""}className='text-link'>
 
-    <div className={time==0?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+    <div onClick={()=>setTime(0)} className={time==0?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
     <p className={time==0?"tabBoxActive":"tabBoxText"}>
       روزانه
       </p>

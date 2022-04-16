@@ -534,3 +534,6 @@ padding: 20px 0px;
 .mt5{
     margin-top: 5%;
 }
+
+.container::-webkit-scrollbar {   display: none; }
+.container {   -ms-overflow-style: none; }

@@ -8,6 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Logo from "../../assets/img/logo.png";
+import { Link } from 'react-router-dom';
 export default ({data,setBundle,setAmount,bundle}) => {
   return (
     <Swiper
@@ -26,8 +27,9 @@ export default ({data,setBundle,setAmount,bundle}) => {
                 return(
 
                     <SwiperSlide>
-                   <div onClick={()=>{setBundle(item.id);setAmount(item.amount)}} className={bundle==item.id?"chargeSliderBox tabBoxActiveMain":"chargeSliderBox"} >
-                     <p className='boxTitle activeTitle'>
+                      <Link onClick={()=>{setBundle(item.id);setAmount(item.amount)}} to={""} className='text-link'>
+                   <div  className={bundle==item.id?"chargeSliderBox tabBoxActiveMain":"chargeSliderBox"} >
+                     <p className={bundle==item.id?'boxTitle activeTitle':"boxTitle"}>
                         {item.title}
                      </p>
                      {/* <p className='boxTitle activeTitle'>
@@ -36,10 +38,11 @@ export default ({data,setBundle,setAmount,bundle}) => {
                      <p className='boxTitle activeTitle'>
                          از 2 تا 7 صبح
                      </p> */}
-                     <p className='boxPrice activeTitle'>
+                     <p className={bundle==item.id?'boxPrice activeTitle':"boxPrice"}>
                          {item.amount} ریال
                      </p>
                     </div>
+                    </Link>
                    </SwiperSlide>
                  
                 )
