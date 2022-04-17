@@ -6,6 +6,8 @@ import Questions from "../layouts/Questions";
 import Icon1 from "../../assets/img/i1.png";
 import Icon2 from "../../assets/img/i2.png";
 import Icon3 from "../../assets/img/i3.png";
+import Mtn from "../../assets/img/active-IRANCELL.png";
+import Logo from "../../assets/img/logo.png";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import {useParams ,useLocation } from "react-router-dom";
@@ -151,7 +153,7 @@ const Success = () => {
          
         <Header/>
         <Container className="chargePageContainer">
-            {
+            {/* {
                 statusCode==0?
 pin?
                 <p>تراکنش موفقیت آمیز بود
@@ -166,7 +168,76 @@ pin?
                 :
                 <p>تراکنش لغو شد</p>
 
-            }
+            } */}
+            <div className="modalDiv">
+              <div className="blueBox">
+                <button className="closeBtn">
+                  X
+                </button>
+                <div className="blueflex">
+                  <div>
+                    <p>
+                      پرداخت موفق
+                    </p>
+                  </div>
+                  <div className="lightBlue">
+                    <img src={Mtn}/>
+                  </div>
+                </div>
+            </div>
+            <div className="tableDiv">
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
+                  <p className="tableHeader ta-right">
+                    شارژ ایرانسل
+                  </p>
+                  <p className="tableHeader ta-left">
+                    20.000 ریال
+                  </p>
+                </div>
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
+                  <p className="tableText ta-right">
+                    شماره همراه
+                  </p>
+                  <p className="tableText ta-left">
+                    09120760563
+                  </p>
+                </div>
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
+                  <p className="tableText ta-right">
+                    نوع شارژ
+                  </p>
+                  <p className="tableText ta-left">
+                    مستقیم
+                  </p>
+                </div>
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
+                  <p className="tableText ta-right">
+                    زمان
+                  </p>
+                  <p className="tableText ta-left">
+                    28/01/01 - 17:28
+                  </p>
+                </div>
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
+                  <p className="tableText ta-right">
+                    کد رهگیری
+                  </p>
+                  <p className="tableText ta-left">
+                  123456789012345678901234567890                  </p>
+                </div>
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
+                  <p className="tableText ta-right">
+                    پرداخت از
+                  </p>
+                  <p className="tableText ta-left">
+                 بانک سامان - 1234 </p>
+                </div>
+            </div>
+            <img src={Logo} className="modalLogo"/>
+            <p className="logoText">
+              پرداخت امن با ایزی پی
+            </p>
+            </div>
         </Container>
         <Questions/>
 
