@@ -18,6 +18,7 @@ import Talia from "../../assets/img/talia.png";
 import Rightel from "../../assets/img/rightel-f.png";
 import Mci from "../../assets/img/mci-f.png";
 import Mtn from "../../assets/img/mtn.png";
+
 const Footer = () => {
 
   return (

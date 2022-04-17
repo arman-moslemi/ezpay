@@ -1,7 +1,7 @@
 
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import Logo from "../../assets/img/logo.png";
-import Banner from "../../assets/img/banner.png";
+import Banner from "../../assets/img/banner.svg";
 const Header = () => {
 
   return (

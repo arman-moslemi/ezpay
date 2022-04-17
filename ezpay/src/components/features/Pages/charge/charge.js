@@ -13,7 +13,7 @@ import Taliya from "../../assets/img/taliya.png";
 import Mci from "../../assets/img/mci.png";
 import Rightel from "../../assets/img/rightel.png";
 import Phone from "../../assets/icon/Phone";
-import LeftImg from "../../assets/img/leftImg.png";
+import LeftImg from "../../assets/img/leftImg.svg";
 import ChargeSlider from "../layouts/ChargeSlider";
 import { useEffect, useState ,useRef} from "react";
 import { apiUrl } from "../../../../commons/inFormTypes";

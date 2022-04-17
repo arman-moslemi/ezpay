@@ -642,3 +642,9 @@ padding: 20px 0px;
     display: flex;
 
 }
+.headerRow .row{
+    align-items: center;
+}
+svg:not(:root) {
+overflow: visible !important;
+}

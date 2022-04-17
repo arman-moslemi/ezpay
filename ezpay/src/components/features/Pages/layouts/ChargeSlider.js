@@ -27,7 +27,7 @@ export default ({data,setBundle,setAmount,bundle}) => {
                 return(
 
                     <SwiperSlide>
-                      <Link onClick={()=>{setBundle(item.id);setAmount(item.amount)}} to={""} className='text-link'>
+                      <Link onClick={()=>{setBundle(item.id);setAmount(item.billAmount)}} to={""} className='text-link'>
                    <div  className={bundle==item.id?"chargeSliderBox tabBoxActiveMain":"chargeSliderBox"} >
                      <p className={bundle==item.id?'boxTitle activeTitle':"boxTitle"}>
                         {item.title}
