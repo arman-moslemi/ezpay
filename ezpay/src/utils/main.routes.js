@@ -11,7 +11,7 @@ const MainRoutes = (props) => {
 					exact
 					path='/'
 					name='charge'
-					element={<Success/>}
+					element={<Charge/>}
 				/></Routes>
 				<Routes>
 				<Route

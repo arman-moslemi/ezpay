@@ -83,7 +83,7 @@ const Success = () => {
               localStorage.setItem("phone","")
               localStorage.setItem("type","")
               localStorage.setItem("amount","")
-          alert("موفقیت آمیز")
+          // alert("موفقیت آمیز")
           
           // console.log(userObj?.bundles
             // console.log(JSON.stringify(response.data.Data)?.bundles)
@@ -115,7 +115,7 @@ const Success = () => {
               localStorage.setItem("phone","")
               localStorage.setItem("type","")
               localStorage.setItem("vtp","")
-          alert("موفقیت آمیز")
+          // alert("موفقیت آمیز")
           
           // console.log(userObj?.bundles
             console.log(555555)
@@ -158,7 +158,11 @@ pin?
                   کد:{pin}
                 </p>
                 :
-                <p>تراکنش موفقیت آمیز بود </p>
+                <div>
+
+                  <p>تراکنش موفقیت آمیز بود </p>
+                  <p>شماره فاکتور:{FactorNumber} </p>
+                </div>
                 :
                 <p>تراکنش لغو شد</p>
 

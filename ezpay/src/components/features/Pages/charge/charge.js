@@ -56,7 +56,7 @@ console.log(operator)
       Username:37068,
     Password:6182,
     // amount:charge,
-    amount:(parseInt( charge)*98)/100,
+    amount:parseInt((parseInt( charge)*98)/100),
 
     cellNumber:ss,
        chargeType:direct,
@@ -87,6 +87,7 @@ console.log(operator)
   
 const dargahNet=()=>{
   console.log(document.getElementById("phone2").value)
+  console.log(amount)
   var ss=document.getElementById("phone2").value
   localStorage.setItem("opr",operator)
 localStorage.setItem("bundle",bundle)
@@ -100,7 +101,7 @@ localStorage.setItem("amount",amount)
     .post(apiUrl + "dargah",{
       Username:37068,
     Password:6182,
-    amount:(parseInt( amount)*98)/100,
+    amount:parseInt((parseInt( amount)*98)/100),
     cellNumber:ss,
        bundleId:bundle,
        payType:"بسته"
@@ -258,13 +259,13 @@ useEffect(()=>{
   </p>
 <div className="mRow">
 <div onClick={()=>setPage(2)}>
-   <div className="innerWhiteBox">
+   <div className="innerWhiteBox hoverCursor">
      <img src={Icon2} id="Icon2"/>
      <p>شارژ سیم کارت</p>
    </div>
   </div>
   <div onClick={()=>setPage(3)}>
-   <div className="innerWhiteBox">
+   <div className="innerWhiteBox hoverCursor">
    <img src={Icon3}  id="Icon3"/>
    <p>
      بسته اینترنت
