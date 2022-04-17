@@ -19,7 +19,8 @@ const Success = () => {
     const FactorNumber = new URLSearchParams(search).get("factorNumber");
     const statusCode = new URLSearchParams(search).get("statusCode");
     const statusDesc = new URLSearchParams(search).get("statusDesc");
-    const amount = new URLSearchParams(search).get("amount");
+    // const amount = new URLSearchParams(search).get("amount");
+    const amount =localStorage.getItem("amount")
     console.log(FactorNumber);
     console.log(statusCode);
     console.log(statusDesc);
@@ -176,61 +177,137 @@ pin?
                 </button>
                 <div className="blueflex">
                   <div>
+                    {   statusCode==0?
+                    
                     <p>
                       پرداخت موفق
                     </p>
+                  :
+                  <p>
+                  پرداخت ناموفق
+                </p>
+                  }
                   </div>
+                  {
+                    localStorage.getItem("opr")=="0"?
+
                   <div className="lightBlue">
                     <img src={Mtn}/>
                   </div>
+                    :
+                    null
+                  }
                 </div>
             </div>
             <div className="tableDiv">
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
+                  {
+                    localStorage.getItem("opr")=="0" &&  localStorage.getItem("type")=="net"?
                   <p className="tableHeader ta-right">
-                    شارژ ایرانسل
+                    بسته ایرانسل
                   </p>
+                  :
+                  localStorage.getItem("opr")=="0" &&  localStorage.getItem("type")!="net"?
+                  <p className="tableHeader ta-right">
+                  شارژ ایرانسل
+                </p>
+                :
+                null
+
+                  }
+                  {
+                    localStorage.getItem("opr")=="1" &&  localStorage.getItem("type")=="net"?
+                  <p className="tableHeader ta-right">
+                    بسته همراه اول
+                  </p>
+                  :
+                  localStorage.getItem("opr")=="1" &&  localStorage.getItem("type")!="net"?
+                  <p className="tableHeader ta-right">
+                  شارژ همراه اول
+                </p>
+                :
+                null
+
+                  }
+                  {
+                    localStorage.getItem("opr")=="2" &&  localStorage.getItem("type")=="net"?
+                  <p className="tableHeader ta-right">
+                    بسته رایتل
+                  </p>
+                  :
+                  localStorage.getItem("opr")=="2" &&  localStorage.getItem("type")!="net"?
+                  <p className="tableHeader ta-right">
+                  شارژ رایتل
+                </p>
+                :
+                null
+
+                  }
+                    {/* {
+                     localStorage.getItem("type")=="net"?
+                    <p className="tableHeader ta-left">
+                    {localStorage.getItem("amountMain")} ریال
+                  </p>
+                  :
                   <p className="tableHeader ta-left">
-                    20.000 ریال
-                  </p>
+                    {localStorage.getItem("amount")} ریال
+                </p>
+} */}
+            <p className="tableHeader ta-left">
+                    {amount} ریال
+                </p>         
                 </div>
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
                   <p className="tableText ta-right">
                     شماره همراه
                   </p>
                   <p className="tableText ta-left">
-                    09120760563
-                  </p>
+                  {localStorage.getItem("phone")}
+                                    </p>
                 </div>
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
                   <p className="tableText ta-right">
                     نوع شارژ
                   </p>
-                  <p className="tableText ta-left">
+                  {
+                    pin?
+<p className="tableText ta-left">
+                    غیر مستقیم
+                  </p>
+                    :
+<p className="tableText ta-left">
                     مستقیم
                   </p>
+                  }
+                  
                 </div>
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
-                  <p className="tableText ta-right">
+                  {/* <p className="tableText ta-right">
                     زمان
                   </p>
                   <p className="tableText ta-left">
                     28/01/01 - 17:28
+                  </p> */}
+                  <p className="tableText ta-right">
+                  کد شارژ
                   </p>
+                  <p className="tableText ta-left">
+                    {pin}
+                                      </p>
                 </div>
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
                   <p className="tableText ta-right">
                     کد رهگیری
                   </p>
                   <p className="tableText ta-left">
-                  123456789012345678901234567890                  </p>
+                  {FactorNumber}                  </p>
                 </div>
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
                   <p className="tableText ta-right">
                     پرداخت از
                   </p>
                   <p className="tableText ta-left">
-                 بانک سامان - 1234 </p>
+                ایزی پی </p>
                 </div>
             </div>
             <img src={Logo} className="modalLogo"/>

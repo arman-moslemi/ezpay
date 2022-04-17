@@ -31,6 +31,7 @@ const [tab,setTab]=useState(0)
 const [time,setTime]=useState(0)
 const [bundle,setBundle]=useState(0)
 const [amount,setAmount]=useState(0)
+const [amountMain,setAmountMain]=useState(0)
 const [direct,setDirect]=useState("DIRECT")
 const [charge,setCharge]=useState("")
 const [vtp,setVtp]=useState(0)
@@ -95,6 +96,7 @@ localStorage.setItem("bundle",bundle)
 localStorage.setItem("phone",ss)
 localStorage.setItem("type","net")
 localStorage.setItem("amount",amount)
+localStorage.setItem("amountMain",amountMain)
 
     const axios = require("axios");
   
@@ -618,7 +620,7 @@ null
   </div>
   <div className="row d-flex justify-content-start align-items-center pdtop30 pdbottom30">
    <Col md={7} className="chargeSliderDiv pd0">
-    <ChargeSlider bundle={bundle} setAmount={setAmount} setBundle={setBundle} data={time==0?box.daily:time==1?box.weekly:time==2?box.monthly:time==3?box.annual:null}/>
+    <ChargeSlider bundle={bundle} setAmount={setAmount} setAmountMain={setAmountMain}  setBundle={setBundle} data={time==0?box.daily:time==1?box.weekly:time==2?box.monthly:time==3?box.annual:null}/>
    </Col>
    <Col md={5} className="pd0 d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
  

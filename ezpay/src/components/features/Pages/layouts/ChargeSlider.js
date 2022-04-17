@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Logo from "../../assets/img/logo.png";
 import { Link } from 'react-router-dom';
-export default ({data,setBundle,setAmount,bundle}) => {
+export default ({data,setBundle,setAmount,bundle,setAmountMain}) => {
   return (
     <Swiper
       className='chargeSlider'
@@ -27,7 +27,7 @@ export default ({data,setBundle,setAmount,bundle}) => {
                 return(
 
                     <SwiperSlide>
-                      <Link onClick={()=>{setBundle(item.id);setAmount(item.billAmount)}} to={""} className='text-link'>
+                      <Link onClick={()=>{setBundle(item.id);setAmount(item.billAmount);setAmountMain(item.amount)}} to={""} className='text-link'>
                    <div  className={bundle==item.id?"chargeSliderBox tabBoxActiveMain":"chargeSliderBox"} >
                      <p className={bundle==item.id?'boxTitle activeTitle':"boxTitle"}>
                         {item.title}
