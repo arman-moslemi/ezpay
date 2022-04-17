@@ -87,6 +87,7 @@ console.log(operator)
   
 const dargahNet=()=>{
   console.log(document.getElementById("phone2").value)
+  console.log(phone)
   console.log(amount)
   var ss=document.getElementById("phone2").value
   localStorage.setItem("opr",operator)
@@ -339,7 +340,7 @@ null
     <div className="d-flex">
     
     <div className="tabBox pdCustom">
-    <input id="phone"    />
+    <input id="phone"  onChange={(e)=>setPhone(e.target.value)}  />
       <Phone/>
     
     </div>
@@ -452,15 +453,22 @@ null
       </p>
     </div>
     </Link>
-    {/* <div onClick={()=>{setCharge("500000"); operator==0?
-    setVtp(29)
-    :operator==1?
-    setVtp(22)
-    :setVtp(51)}} className={charge=="500000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    {
+      operator!=2?
+      <Link onClick={()=>{setCharge("500000"); operator==0?
+      setVtp(32)
+      :operator==1?
+      setVtp(8)
+      :setVtp(51)}} to={""}className='text-link'>
+    <div  className={charge=="500000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
     <p className={charge=="500000"?"tabBoxActive":"tabBoxText"}>
        50 هزارتومان
       </p>
-    </div> */}
+    </div>
+    </Link>
+    :
+    null
+    }
     </div>
   </div>
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 d-res-block">
@@ -490,7 +498,9 @@ null
   </div>
   <div className="d-flex justify-content-end">
     {/* <Button onClick={()=>buyCharge()} className="payBtn"> */}
-    <Button onClick={()=>dargahCharge()} className="payBtn">
+    <Button
+     disabled={phone?false:true} 
+     onClick={()=>dargahCharge()} className="payBtn">
       پرداخت
     </Button>
   </div>
@@ -516,7 +526,7 @@ null
     <div className="d-flex over">
     
     <div className="tabBox pdCustom">
-    <input id="phone2"    />
+    <input id="phone2" onChange={(e)=>setPhone2(e.target.value)}    />
       <Phone/>
     
     </div>
@@ -653,7 +663,10 @@ null
   
   <div className="d-flex justify-content-end">
     {/* <Button onClick={()=>buyInternet()} className="payBtn"> */}
-    <Button onClick={()=>dargahNet()} className="payBtn">
+    <Button onClick={()=>dargahNet()} 
+         disabled={phone2?false:true} 
+
+    className="payBtn">
       پرداخت
     </Button>
   </div>
