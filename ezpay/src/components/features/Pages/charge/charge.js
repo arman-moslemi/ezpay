@@ -15,6 +15,7 @@ import Rightel from "../../assets/img/rightel.png";
 import Phone from "../../assets/icon/Phone";
 import LeftImg from "../../assets/img/leftImg.svg";
 import ChargeSlider from "../layouts/ChargeSlider";
+import Time from "../layouts/Time";
 import { useEffect, useState ,useRef} from "react";
 import { apiUrl } from "../../../../commons/inFormTypes";
 import { Link } from "react-router-dom";
@@ -26,6 +27,7 @@ const [phone2,setPhone2]=useState("")
 const [operator,setOperator]=useState(0)
 const [sim,setSime]=useState(0)
 const [box,setBox]=useState([])
+const [tab,setTab]=useState(0)
 const [time,setTime]=useState(0)
 const [bundle,setBundle]=useState(0)
 const [amount,setAmount]=useState(0)
@@ -192,6 +194,14 @@ localStorage.setItem("phone",ss)
 // console.log(error);
 // });
 }
+
+// const Times=(e)=>{
+//   e.preventDefault();
+//   // document.body.style.overflow = 'hidden';
+//   setTime(1)
+//   // window.scrollTo(0, parseInt(window.pageYOffset));
+// }
+
 const mainSlider=()=>{
   const axios = require("axios");
 
@@ -225,6 +235,7 @@ console.log(userObj?.bundles);
 }
 useEffect(()=>{
   mainSlider()
+
 },[operator])
 // const setPhone2(e.target.value)(e) => {
 //   console.log(e.target.value)
@@ -252,7 +263,7 @@ useEffect(()=>{
      <p>شارژ سیم کارت</p>
    </div>
   </div>
-  <div onClick={()=>setPage(2)}>
+  <div onClick={()=>setPage(3)}>
    <div className="innerWhiteBox">
    <img src={Icon3}  id="Icon3"/>
    <p>
@@ -279,15 +290,17 @@ useEffect(()=>{
 
 :
 
-<div className="whiteBox pd30">
-<Tabs>
-<TabList  className="over">
-  <Tab>شارژ سیم کارت</Tab>
-  <Tab>بسته اینترنت</Tab>
-  {/* <Tab>پرداخت قبض</Tab> */}
-</TabList>
 
-<TabPanel >
+
+  page==2?
+  <div className="whiteBox pd30">
+
+<div  className="over">
+  <button   onClick={()=>setPage(2)} className="tabBtn btnselected">شارژ سیم کارت</button>
+  <button onClick={()=>setPage(3)} className="tabBtn">بسته اینترنت</button>
+  {/* <Tab>پرداخت قبض</Tab> */}
+</div>
+<div className="tab1" >
 <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
     <div className="rowTitleDiv">
       <p>
@@ -296,7 +309,7 @@ useEffect(()=>{
     </div>
     <div className="d-flex over">
       <Link onClick={()=>setDirect("DIRECT")} to={""}className='text-link'>
-    <div  className={direct=="DIRECT"?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
+    <div  className={direct=="DIRECT"?"tabBox w201 tabBoxActiveMain":"tabBox w201"} >
     <p className={direct=="DIRECT"?"tabBoxActive":"tabBoxText"}>
         شارژ مستقیم
       </p>
@@ -304,7 +317,7 @@ useEffect(()=>{
       </Link>
       <Link onClick={()=>setDirect("DESIRE")}  to={""}className='text-link'>
 
-    <div className={direct=="DESIRE"?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div className={direct=="DESIRE"?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <p className={direct=="DESIRE"?"tabBoxActive":"tabBoxText"}>
        دریافت کد شارژ
       </p>
@@ -341,7 +354,7 @@ null
     </div>
     <div className="d-flex over">
     <Link onClick={()=>setOperator(0)}  to={""}className='text-link'>
-    <div  className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
+    <div  className={operator==0?"tabBox w201 tabBoxActiveMain":"tabBox w201"} >
       <img src={Irancell}/>
       <p className={operator==0?"tabBoxActive":"tabBoxText"}>
         ایرانسل
@@ -349,7 +362,7 @@ null
     </div>
     </Link>
     <Link onClick={()=>setOperator(1)} to={""}className='text-link'>
-    <div  className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={operator==1?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <img src={Mci}/>
       <p className={operator==1?"tabBoxActive":"tabBoxText"}>
        همراه اول
@@ -358,7 +371,7 @@ null
     </Link>
     <Link onClick={()=>setOperator(2)}  to={""}className='text-link'>
 
-    <div  className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={operator==2?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <img src={Rightel}/>
       <p className={operator==2?"tabBoxActive":"tabBoxText"}>
         رایتل
@@ -367,7 +380,7 @@ null
     </Link>
     <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
 
-    <div  className={operator==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={operator==3?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <img src={Taliya}/>
       <p className={operator==3?"tabBoxActive":"tabBoxText"}>
         تالیا
@@ -458,7 +471,7 @@ null
     <div className="d-flex over">
     <Link onClick={()=>setChargeType(0)}  to={""}className='text-link'>
 
-    <div className={chargeType==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div className={chargeType==0?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
     <p className={chargeType==0?"tabBoxActive":"tabBoxText"}>
         شارژ عادی
       </p>
@@ -466,7 +479,7 @@ null
     </Link>
     <Link onClick={()=>setChargeType(1)}  to={""}className='text-link'>
 
-    <div className={chargeType==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div className={chargeType==1?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <p className={chargeType==1?"tabBoxActive":"tabBoxText"}>
        شارژ شگفت انگیز
       </p>
@@ -480,8 +493,18 @@ null
       پرداخت
     </Button>
   </div>
-</TabPanel>
-<TabPanel>
+</div>
+</div>
+  :
+  page==3?
+  <div className="whiteBox pd30">
+
+  <div  className="over">
+    <button   onClick={()=>setPage(2)} className="tabBtn" >شارژ سیم کارت</button>
+    <button onClick={()=>setPage(3)} className="tabBtn btnselected" >بسته اینترنت</button>
+    {/* <Tab>پرداخت قبض</Tab> */}
+  </div>
+<div className="tab2">
 
 <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
     <div className="rowTitleDiv">
@@ -593,39 +616,37 @@ null
       ساعتی
       </p>
     </div> */}
-        <Link onClick={()=>setTime(0)}  to={""}className='text-link'>
+     {/* <Time setTime={setTime} time={time}/> */}
+     <Link onClick={()=>setTime(0)}  to={""}className='text-link'>
 
-    <div onClick={()=>setTime(0)} className={time==0?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-    <p className={time==0?"tabBoxActive":"tabBoxText"}>
-      روزانه
-      </p>
-    </div>
-    </Link>
-    <Link onClick={()=>setTime(1)}  to={""}className='text-link'>
+<div  className={time==0?"tabBox w97  tabBoxActiveMain":"tabBox w97 "}>
+<p className={time==0?"tabBoxActive":"tabBoxText"}>
+  روزانه
+  </p>
+</div>
+</Link>
 
-    <div  className={time==1?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-    <p className={time==1?"tabBoxActive":"tabBoxText"}>
-     هفتگی
-      </p>
-    </div>
-    </Link>
-    <Link onClick={()=>setTime(2)}  to={""}className='text-link'>
+<div  onClick={()=>setTime(1)}  className={time==1?"tabBox w97  tabBoxActiveMain hoverCursor":"tabBox w97  hoverCursor"}>
+<p className={time==1?"tabBoxActive":"tabBoxText"}>
+ هفتگی
+  </p>
+</div>
+<Link onClick={()=>setTime(2)}  to={""}className='text-link'>
 
-    <div   className={time==2?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-    <p className={time==2?"tabBoxActive":"tabBoxText"}>
-      ماهانه
-      </p>
-    </div>
-    </Link>
-    <Link onClick={()=>setTime(3)}  to={""}className='text-link'>
+<div   className={time==2?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+<p className={time==2?"tabBoxActive":"tabBoxText"}>
+  ماهانه
+  </p>
+</div>
+</Link>
+<Link onClick={()=>setTime(3)}  to={""}className='text-link'>
 
-    <div  className={time==3?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-    <p className={time==3?"tabBoxActive":"tabBoxText"}>
-      بلند مدت
-      </p>
-    </div>
-    </Link>
-  
+<div  className={time==3?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
+<p >
+  بلند مدت
+  </p>
+</div>
+</Link>
  </Col>
   </div>
   
@@ -635,14 +656,17 @@ null
       پرداخت
     </Button>
   </div>
-</TabPanel>
-{/* <TabPanel>
-  <h2>Any content 2</h2>
-</TabPanel> */}
-</Tabs>
-   </div>
-
+</div>
+</div>
+  :
+  null
 }
+
+
+
+
+
+
    
 
 

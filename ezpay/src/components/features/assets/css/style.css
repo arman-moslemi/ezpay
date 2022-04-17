@@ -194,13 +194,13 @@ border: none;
   .pd30{
       padding: 30px !important;
   }
-  .react-tabs__tab--selected{
+  .btnselected{
     background: #FF4296 !important;
     color: #fff !important;
     border-radius: 30px !important;
 
   }
-  .react-tabs__tab{
+  .tabBtn{
       font-family: "YekanBakhBold" !important;
       box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
 border-radius: 30px;
@@ -211,6 +211,8 @@ margin-right: 50px;
 margin-left: 50px;
 color: #707070;
 font-size: 20px;
+background-color: #fff;
+    border: none;
   }
   .react-tabs__tab-list{
       padding-bottom: 20px !important;
@@ -315,6 +317,7 @@ justify-content: center;
      
   }
   .chargeSliderBox{
+      min-height: 160px;
     width: 150px;
     height: auto;
     background: #fff;
@@ -377,12 +380,9 @@ position: absolute;
       display: none;
   }
   @media screen and (max-width:1400px){
-     .desktopFooter{
-         display: none !important;
-     }
-     .responsiveFooter{
-         display: block !important;
-     }
+   .dresM{
+       display: block !important;
+   }
   }
 
   @media screen and (max-width:1200px){
@@ -399,7 +399,12 @@ position: absolute;
   }
 
   @media screen and (max-width:1000px){
-      
+    .desktopFooter{
+        display: none !important;
+    }
+    .responsiveFooter{
+        display: block !important;
+    }
   .chargePageContainer {
       width: 100% !important;
       max-width: 100% !important;
@@ -517,6 +522,9 @@ padding: 20px 0px;
     .dlIcon{
         width: 100% !important;
     }
+    .w201{
+        width: 150px !important;
+    }
 }
 @media screen and (max-width:500px){
     .footerIcon{
@@ -546,6 +554,9 @@ padding: 20px 0px;
 @media screen and (max-width:450px){
     .dlIcon{
         width: 100% !important;
+    }
+    .w201{
+        width: 120px !important;
     }
 }
 .text-link {
@@ -647,4 +658,13 @@ padding: 20px 0px;
 }
 svg:not(:root) {
 overflow: visible !important;
+}
+.dresM{
+    display: flex;
+}
+.w201{
+    width: 200px;
+}
+.hoverCursor:hover{
+    cursor: pointer;
 }

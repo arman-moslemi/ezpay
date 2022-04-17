@@ -53,10 +53,16 @@ const Footer = () => {
       </div>
       <div className="footerSecondCol ta-center mt5">
         <div className="d-flex justify-content-center mb-3">
-        <img src={Twitter} className="footerIcon"/>
+        {/* <img src={Twitter} className="footerIcon"/> */}
+        <a href="https://www.instagram.com/ir_ezpay/">
+
         <img src={Instagram} className="footerIcon"/>
-        <img src={Telegram} className="footerIcon"/>
-        <img src={Facebook} className="footerIcon"/>
+        </a>
+        <a href="https://t.me/ezpayir">
+
+        <img src={Telegram}  className="footerIcon"/>
+        </a>
+        {/* <img src={Facebook} className="footerIcon"/> */}
         
         </div>
         <p className="footerDetail ta-center" style={{marginRight:0}}>
@@ -67,14 +73,24 @@ const Footer = () => {
       <p className="footerTitle">
           دانلود اپلیکیشن
         </p>
-        <div className="d-flex justify-content-between mt-4">
-          <img src={Playstore} className="dlIcon"/>
-          <img src={Bazar} className="dlIcon"/>
-          
+        <div className="justify-content-between mt-4 dresM">
+          <a href="https://play.google.com/store/apps/details?id=com.tosansoha.ezpay">
+
+          <img   src={Playstore} className="dlIcon"/>
+          </a>
+          <a href="https://cafebazaar.ir/app/com.tosansoha.ezpay">
+
+          <img   src={Bazar} className="dlIcon"/>
+          </a>
         </div>
-        <div className="d-flex justify-content-between">
-        <img src={Pwa} className="dlIcon"/>
-          <img src={Myket} className="dlIcon"/>
+        <div className="justify-content-between dresM">
+        <a href="https://app.ezpay.ir/#/">
+
+        <img   src={Pwa} className="dlIcon"/>
+        </a>
+        <a href="https://myket.ir/app/com.tosansoha.ezpay">
+          <img  src={Myket} className="dlIcon"/>
+          </a>
         </div>
         </div>
         <div className="footerFourthCol">
@@ -96,16 +112,28 @@ const Footer = () => {
       <p className="footerTitle">
           دانلود اپلیکیشن
         </p>
-        
-          <img src={Playstore} className="dlIcon"/>
+        <a href="https://play.google.com/store/apps/details?id=com.tosansoha.ezpay">
+
+          <img src={Playstore}  className="dlIcon"/>
+        </a>
           <br/>
-          <img src={Bazar} className="dlIcon"/>
+          <a href="https://cafebazaar.ir/app/com.tosansoha.ezpay">
+
+          <img  className="dlIcon"/>
+          </a>
           <br/>
         
-       
-        <img src={Pwa} className="dlIcon"/>
+          <a href="https://app.ezpay.ir/#/">
+
+        <img src={Pwa}  className="dlIcon"/>
+        </a>
+
         <br/>
+        <a href="https://myket.ir/app/com.tosansoha.ezpay">
+
           <img src={Myket} className="dlIcon"/>
+          </a>
+
         <br/>
 
 
@@ -142,13 +170,18 @@ const Footer = () => {
       <div className="d-flex mt-5">
       <div className="resFooterThirdCol">
       <div className="shareRow mb-3">
-        <img src={Twitter} className="footerIcon"/>
-        <img src={Instagram} className="footerIcon"/>
-        
+        {/* <img src={Twitter} className="footerIcon"/> */}
+        <a href="https://www.instagram.com/ir_ezpay/">
+
+        <img src={Instagram}  className="footerIcon"/>
+        </a>
+        <a href="https://t.me/ezpayir">
+
+        <img src={Telegram}  className="footerIcon"/>
+       </a>
         </div>
         <div className="shareRow mb-3">
-        <img src={Telegram} className="footerIcon"/>
-        <img src={Facebook} className="footerIcon"/>
+       {/* <img src={Facebook} className="footerIcon"/> */}
         
         </div>
         <p className="footerDetail ta-right" style={{marginRight:0}}>
