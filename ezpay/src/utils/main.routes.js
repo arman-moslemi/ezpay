@@ -5,7 +5,7 @@ import ChargeInner from '../components/features/Pages/charge/chargeInner';
 import Success from '../components/features/Pages/charge/Succes';
 const MainRoutes = (props) => {
 	return (
-  <BrowserRouter basename="/charge/success">
+  <BrowserRouter basename="/charge">
 			<Routes>
 				<Route
 					exact
