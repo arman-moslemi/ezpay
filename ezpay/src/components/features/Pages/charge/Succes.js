@@ -7,6 +7,8 @@ import Icon1 from "../../assets/img/i1.png";
 import Icon2 from "../../assets/img/i2.png";
 import Icon3 from "../../assets/img/i3.png";
 import Mtn from "../../assets/img/active-IRANCELL.png";
+import Mci from "../../assets/img/mci.png";
+import Rightel from "../../assets/img/rightel.png";
 import Logo from "../../assets/img/logo.png";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -19,14 +21,49 @@ const Success = () => {
     const FactorNumber = new URLSearchParams(search).get("factorNumber");
     const statusCode = new URLSearchParams(search).get("statusCode");
     const statusDesc = new URLSearchParams(search).get("statusDesc");
+    const processUid = new URLSearchParams(search).get("processUid");
     // const amount = new URLSearchParams(search).get("amount");
     const amount =localStorage.getItem("amount")
     console.log(FactorNumber);
     console.log(statusCode);
     console.log(statusDesc);
     const [pin,setPin]=useState("")
+    const verify=()=>{
+   
+      const axios = require("axios");
+    
+      axios
+      .post(apiUrl + "verify",{
+        processUid:processUid,
+      })
+    .then(function (response) {
+    if (response.data.result == "true") {
 
-    const buyInternet=()=>{
+    // alert("موفقیت آمیز")
+    console.log(956)
+    console.log(response.data)
+    let userObj = JSON.parse(response.data.Data);
+    console.log(userObj)
+    console.log(userObj.transferInfo.transactionNumber)
+      if(  localStorage.getItem("type")=="net"){
+            buyInternet(userObj.transferInfo.transactionNumber)
+         }
+         else{
+
+             buyCharge(userObj.transferInfo.transactionNumber)
+         }
+    
+    }
+    else{
+      let userObj = JSON.parse(response.data.message);
+    console.log(userObj)
+      alert(userObj.description)
+    }})
+    .catch(function (error) {
+    console.log(error);
+    });
+    }
+    const buyInternet=(tr)=>{
    
           const axios = require("axios");
         
@@ -40,7 +77,8 @@ const Success = () => {
           amount:localStorage.getItem("amount"),
           cellNumber:localStorage.getItem("phone"),
           fact:localStorage.getItem("fact"),
-          realFact:FactorNumber
+          realFact:FactorNumber,
+          transaction:tr
           })
         .then(function (response) {
         if (response.data.result == "true") {
@@ -64,7 +102,7 @@ const Success = () => {
         console.log(error);
         });
         }
-        const buyCharge=()=>{
+        const buyCharge=(tr)=>{
           const axios = require("axios");
           console.log(1548)
           if(localStorage.getItem("direct")!="DESIRE"){
@@ -77,7 +115,9 @@ const Success = () => {
             cellNumber:localStorage.getItem("phone"),
             chargeType:localStorage.getItem("direct"),
             fact:localStorage.getItem("fact"),
-            realFact:FactorNumber
+            realFact:FactorNumber,
+            transaction:tr
+
             })
           .then(function (response) {
           if (response.data.result == "true") {
@@ -140,13 +180,8 @@ const Success = () => {
         }
         useEffect(()=>{
             console.log(localStorage.getItem("type"))
-         if(  localStorage.getItem("type")=="net"){
-            buyInternet()
-         }
-         else{
-
-             buyCharge()
-         }
+            verify()
+   
           },[])
 
     return (
@@ -193,6 +228,16 @@ pin?
 
                   <div className="lightBlue">
                     <img src={Mtn}/>
+                  </div>
+                    :
+                    localStorage.getItem("opr")=="1"?
+                    <div className="lightBlue">
+                    <img src={Mci}/>
+                  </div>
+                    :
+                    localStorage.getItem("opr")=="2"?
+                    <div className="lightBlue">
+                    <img src={Rightel}/>
                   </div>
                     :
                     null

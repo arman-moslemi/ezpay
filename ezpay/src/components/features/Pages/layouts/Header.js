@@ -2,6 +2,7 @@
 import { Container ,Col, Button,Row} from "react-bootstrap";
 import Logo from "../../assets/img/logo.png";
 import Banner from "../../assets/img/banner.svg";
+import Banner2 from "../../assets/img/banner2.svg";
 const Header = () => {
 
   return (
@@ -13,10 +14,10 @@ const Header = () => {
   <div className="headerRow">
   <div className="row">
        <Col md={2} className="ta-right">
-        <img src={Logo} onClick={()=>window.location.href="https://ezpay.ir/charge"} className="logoImg"/>
+        <img src={Logo} onClick={()=>window.location.href="https://ezpay.ir/charge"} className="logoImg hoverCursor"/>
        </Col>
        <Col md={8} >
-          <img src={Banner} className="banner"/>
+          <img src={Banner2} className="banner"/>
        </Col>
        <Col md={2} className="ta-left">
         <Button onClick={()=>window.location.href="https://app.ezpay.ir"} className="downloadBtn fontWeightBold">
@@ -37,7 +38,7 @@ const Header = () => {
         </Button>
        </Col>
        <Col md={12} >
-          <img src={Banner} className="banner"/>
+          <img src={Banner2} className="banner"/>
        </Col>
      </div>
      </div>
