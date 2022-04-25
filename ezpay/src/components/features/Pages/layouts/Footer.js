@@ -119,7 +119,7 @@ const Footer = () => {
           <br/>
           <a href="https://cafebazaar.ir/app/com.tosansoha.ezpay">
 
-          <img  className="dlIcon"/>
+          <img  src={Bazar} className="dlIcon"/>
           </a>
           <br/>
         

@@ -28,6 +28,31 @@ const Success = () => {
     console.log(statusCode);
     console.log(statusDesc);
     const [pin,setPin]=useState("")
+    const [error,setError]=useState(false)
+    const [trNumber,setTrnumber]=useState("")
+    const setTrans=(ss)=>{
+   
+      const axios = require("axios");
+    
+      axios
+      .post(apiUrl + "setTransaction",{
+        fact:FactorNumber,
+        transaction:ss
+      })
+    .then(function (response) {
+    if (response.data.result == "true") {
+
+    // alert("موفقیت آمیز")
+
+    
+    }
+    else{
+    
+    }})
+    .catch(function (error) {
+    console.log(error);
+    });
+    }
     const verify=()=>{
    
       const axios = require("axios");
@@ -35,6 +60,8 @@ const Success = () => {
       axios
       .post(apiUrl + "verify",{
         processUid:processUid,
+        fact:localStorage.getItem("fact"),
+        realFact:FactorNumber,
       })
     .then(function (response) {
     if (response.data.result == "true") {
@@ -45,13 +72,43 @@ const Success = () => {
     let userObj = JSON.parse(response.data.Data);
     console.log(userObj)
     console.log(userObj.transferInfo.transactionNumber)
-      if(  localStorage.getItem("type")=="net"){
-            buyInternet(userObj.transferInfo.transactionNumber)
-         }
-         else{
+    setTrnumber(userObj.transferInfo.transactionNumber)
+    setTrans(userObj.transferInfo.transactionNumber)
+    localStorage.setItem("direct","")
+    localStorage.setItem("vtp","")
+    }
+    else{
+      let userObj = JSON.parse(response.data.message);
+    console.log(userObj)
+      alert(userObj.description)
+    }})
+    .catch(function (error) {
+    console.log(error);
+    });
+    }
+    const reverse=()=>{
+   
+      const axios = require("axios");
+    
+      axios
+      .post(apiUrl + "reverse",{
+        processUid:processUid,
+        fact:FactorNumber,
+        // realFact:FactorNumber,
+      })
+    .then(function (response) {
+    if (response.data.result == "true") {
 
-             buyCharge(userObj.transferInfo.transactionNumber)
-         }
+    // alert("موفقیت آمیز")
+    console.log(956)
+    console.log(response.data)
+    let userObj = JSON.parse(response.data.Data);
+    setTrnumber(userObj.transferInfo.transactionNumber)
+    setTrans(userObj.transferInfo.transactionNumber)
+
+    localStorage.setItem("bundle","")
+    localStorage.setItem("direct","")
+    localStorage.setItem("vtp","")
     
     }
     else{
@@ -77,17 +134,13 @@ const Success = () => {
           amount:localStorage.getItem("amount"),
           cellNumber:localStorage.getItem("phone"),
           fact:localStorage.getItem("fact"),
-          realFact:FactorNumber,
-          transaction:tr
+         
           })
         .then(function (response) {
         if (response.data.result == "true") {
-            localStorage.setItem("opr","")
-            localStorage.setItem("bundle","")
-            localStorage.setItem("phone","")
-            localStorage.setItem("type","")
-            localStorage.setItem("amount","")
-        alert("موفقیت آمیز")
+        
+            verify()
+        // alert("موفقیت آمیز")
         
         // console.log(userObj?.bundles
           // console.log(JSON.stringify(response.data.Data)?.bundles)
@@ -96,6 +149,9 @@ const Success = () => {
         else{
           let userObj = JSON.parse(response.data.message);
         console.log(userObj)
+        reverse()
+        setError(true)
+
           alert(userObj.description)
         }})
         .catch(function (error) {
@@ -114,9 +170,7 @@ const Success = () => {
             amount:localStorage.getItem("amount"),
             cellNumber:localStorage.getItem("phone"),
             chargeType:localStorage.getItem("direct"),
-            fact:localStorage.getItem("fact"),
-            realFact:FactorNumber,
-            transaction:tr
+        
 
             })
           .then(function (response) {
@@ -127,14 +181,17 @@ const Success = () => {
               localStorage.setItem("type","")
               localStorage.setItem("amount","")
           // alert("موفقیت آمیز")
-          
+          verify()
+
           // console.log(userObj?.bundles
             // console.log(JSON.stringify(response.data.Data)?.bundles)
           
           }
           else{
             let userObj = JSON.parse(response.data.message);
-          
+            reverse()
+            setError(true)
+
             alert(userObj.description)
           
           }})
@@ -153,11 +210,9 @@ const Success = () => {
             })
           .then(function (response) {
           if (response.data.result == "true") {
-              localStorage.setItem("opr","")
-              localStorage.setItem("direct","")
-              localStorage.setItem("phone","")
-              localStorage.setItem("type","")
-              localStorage.setItem("vtp","")
+          
+              verify()
+
           // alert("موفقیت آمیز")
           
           // console.log(userObj?.bundles
@@ -168,7 +223,9 @@ const Success = () => {
           }
           else{
             let userObj = JSON.parse(response.data.Data);
-          
+            reverse()
+            setError(true)
+
             alert(userObj.description)
           
           }})
@@ -180,7 +237,15 @@ const Success = () => {
         }
         useEffect(()=>{
             console.log(localStorage.getItem("type"))
-            verify()
+            // verify()
+            if(  localStorage.getItem("type")=="net"){
+              // buyInternet(userObj.transferInfo.transactionNumber)
+              buyInternet()
+           }
+           else{
+  
+               buyCharge()
+           }
    
           },[])
 
@@ -212,7 +277,7 @@ pin?
                 </button>
                 <div className="blueflex">
                   <div>
-                    {   statusCode==0?
+                    {   statusCode==0 && !error?
                     
                     <p>
                       پرداخت موفق
@@ -326,6 +391,8 @@ pin?
                   }
                   
                 </div>
+                {
+                    pin?
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
                   {/* <p className="tableText ta-right">
                     زمان
@@ -340,13 +407,23 @@ pin?
                     {pin}
                                       </p>
                 </div>
+                :
+                null}
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
                   <p className="tableText ta-right">
                     کد رهگیری
                   </p>
                   <p className="tableText ta-left">
-                  {FactorNumber}                  </p>
+                  {trNumber}                  </p>
                 </div>
+                <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
+                 
+                  <p className="tableText ta-right">
+شماره فاکتور                  </p>
+                  <p className="tableText ta-left">
+                    {FactorNumber}
+                                      </p>
+                                      </div>
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
                   <p className="tableText ta-right">
                     پرداخت از

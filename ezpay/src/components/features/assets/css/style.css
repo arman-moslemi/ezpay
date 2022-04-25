@@ -399,6 +399,16 @@ position: absolute;
   }
 
   @media screen and (max-width:1000px){
+      .margin2{
+          margin-right: 10px !important;
+          margin-left: 10px !important;
+      }
+      .wrapD{
+          flex-wrap: wrap !important;
+      }
+      .wrapD .tabBox{
+          margin-bottom: 15px;
+      }
     .desktopFooter{
         display: none !important;
     }
@@ -514,6 +524,20 @@ overflow-x: scroll;
 white-space: nowrap;
 padding: 20px 0px;
     }
+    .tabBtn{
+        font-family: "YekanBakhBold" !important;
+        box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+  border-radius: 30px;
+  width: 120x;
+  height: 45px;
+  padding: 10px 20px !important;
+  margin-right: 15px;
+  margin-left: 15px;
+  color: #707070;
+  font-size: 14px;
+  background-color: #fff;
+      border: none;
+    }
     .chargeSliderBox{
         width: 100px;
     }
@@ -550,8 +574,36 @@ padding: 20px 0px;
     .colText{
         font-size: 25px !important;;
     }
+    .tabBtn{
+        font-family: "YekanBakhBold" !important;
+        box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+  border-radius: 30px;
+  width: 120px !important;
+  height: 45px;
+  padding: 10px 20px !important;
+  margin-right: 15px;
+  margin-left: 15px;
+  color: #707070;
+  font-size: 14px !important;
+  background-color: #fff;
+      border: none;
+    }
 }
 @media screen and (max-width:450px){
+    .tabBtn{
+        font-family: "YekanBakhBold" !important;
+        box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+  border-radius: 30px;
+  width: 120px !important;
+  height: 45px;
+  padding: 10px 20px !important;
+  margin-right: 15px;
+  margin-left: 15px;
+  color: #707070;
+  font-size: 14px !important;
+  background-color: #fff;
+      border: none;
+    }
     .modalDiv{
         width: 350px !important;
     }
@@ -560,6 +612,22 @@ padding: 20px 0px;
     }
     .w201{
         width: 120px !important;
+    }
+}
+@media screen and (max-width:400px){
+    .tabBtn{
+        font-family: "YekanBakhBold" !important;
+        box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.15);
+  border-radius: 30px;
+  width: 110px !important;
+  height: 45px;
+  padding: 10px 20px !important;
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+  color: #707070;
+  font-size: 14px !important;
+  background-color: #fff;
+      border: none;
     }
 }
 .text-link {

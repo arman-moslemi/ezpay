@@ -36,6 +36,7 @@ const [direct,setDirect]=useState("DIRECT")
 const [charge,setCharge]=useState("")
 const [vtp,setVtp]=useState(0)
 const [chargeType,setChargeType]=useState(0)
+const [typeTime,setTypeTime]=useState(2)
 
 const dargahCharge=()=>{
   console.log(document.getElementById("phone")?.value)
@@ -50,46 +51,54 @@ const dargahCharge=()=>{
 console.log(89456)
 console.log(charge)
 console.log(operator)
-    const axios = require("axios");
-  
-    axios
-    .post(apiUrl + "dargah",{
-      Username:37068,
-    Password:6182,
-    // amount:charge,
-    amount:parseInt((parseInt( charge)*98)/100),
+if( charge==""){
+  alert("لطفا همه موارد را انتخاب کنید")
+}
+else{
 
-    cellNumber:ss,
-       chargeType:direct,
-       Type:operator,
-       payType:"شارژ",
-    })
-  .then(function (response) {
-  if (response.data.result == "true") {
-  
-  // alert("موفقیت آمیز")
-  localStorage.setItem("fact",response.data.FactorNumber)
+  const axios = require("axios");
 
-  let userObj = JSON.parse(response.data.Data);
-  console.log(77)
-  console.log(userObj)
-  console.log(userObj.paymentLink)
-  window.open(userObj.paymentLink);
-  }
-  else{
-    let userObj = JSON.parse(response.data.message);
-  console.log(userObj)
-    alert(userObj.description)
-  }})
-  .catch(function (error) {
-  console.log(error);
-  });
+  axios
+  .post(apiUrl + "dargah",{
+    Username:37068,
+  Password:6182,
+  // amount:charge,
+  amount:parseInt((parseInt( charge)*98)/100),
+
+  cellNumber:ss,
+     chargeType:direct,
+     Type:operator,
+     payType:"شارژ",
+  })
+.then(function (response) {
+if (response.data.result == "true") {
+
+// alert("موفقیت آمیز")
+localStorage.setItem("fact",response.data.FactorNumber)
+
+let userObj = JSON.parse(response.data.Data);
+console.log(77)
+console.log(userObj)
+console.log(userObj.paymentLink)
+window.open(userObj.paymentLink);
+}
+else{
+  let userObj = JSON.parse(response.data.message);
+console.log(userObj)
+  alert(userObj.description)
+}})
+.catch(function (error) {
+console.log(error);
+});
+}
   }
   
 const dargahNet=()=>{
   console.log(document.getElementById("phone2").value)
-  console.log(phone)
   console.log(amount)
+  console.log(phone)
+  console.log(bundle)
+  console.log(7777)
   var ss=document.getElementById("phone2").value
   localStorage.setItem("opr",operator)
 localStorage.setItem("bundle",bundle)
@@ -97,114 +106,48 @@ localStorage.setItem("phone",ss)
 localStorage.setItem("type","net")
 localStorage.setItem("amount",amount)
 localStorage.setItem("amountMain",amountMain)
-
-    const axios = require("axios");
-  
-    axios
-    .post(apiUrl + "dargah",{
-      Username:37068,
-    Password:6182,
-    amount:parseInt((parseInt( amount)*98)/100),
-    cellNumber:ss,
-       bundleId:bundle,
-       payType:"بسته"
-
-    })
-  .then(function (response) {
-  if (response.data.result == "true") {
-  
-  // alert("موفقیت آمیز")
-  
-  // console.log(userObj?.bundles
-  localStorage.setItem("fact",response.data.FactorNumber)
-
-  let userObj = JSON.parse(response.data.Data);
-  window.open(userObj.paymentLink);
-
-  }
-  else{
-    let userObj = JSON.parse(response.data.message);
-  console.log(userObj)
-    alert(userObj.description)
-  }})
-  .catch(function (error) {
-  console.log(error);
-  });
-  }
-const buyInternet=()=>{
-console.log(document.getElementById("phone2").value)
-var ss=document.getElementById("phone2").value
+if(  amount==0 || bundle==0){
+  alert("لطفا همه موارد را انتخاب کنید")
+}
+else{
   const axios = require("axios");
 
-//   axios
-//   .post(apiUrl + "buy",{
-//     Username:37068,
-//   Password:6182,
-//   Type:operator,
-//   bundleId:bundle,
-//   amount:amount,
-//   cellNumber:ss
-//   })
-// .then(function (response) {
-// if (response.data.result == "true") {
+  axios
+  .post(apiUrl + "dargah",{
+    Username:37068,
+  Password:6182,
+  amount:parseInt((parseInt( amount)*98)/100),
+  cellNumber:ss,
+     bundleId:bundle,
+     payType:"بسته"
+
+  })
+.then(function (response) {
+if (response.data.result == "true") {
 
 // alert("موفقیت آمیز")
 
-// // console.log(userObj?.bundles
-//   // console.log(JSON.stringify(response.data.Data)?.bundles)
+// console.log(userObj?.bundles
+localStorage.setItem("fact",response.data.FactorNumber)
 
-// }
-// else{
-//   let userObj = JSON.parse(response.data.message);
-// console.log(userObj)
-//   alert(userObj.description)
-// }})
-// .catch(function (error) {
-// console.log(error);
-// });
+let userObj = JSON.parse(response.data.Data);
+window.open(userObj.paymentLink);
+
 }
-const buyCharge=()=>{
-  const axios = require("axios");
-  console.log(document.getElementById("phone").value)
-  var ss=document.getElementById("phone").value
-  localStorage.setItem("opr",operator)
-localStorage.setItem("direct",direct)
-localStorage.setItem("phone",ss)
-//   axios
-//   .post(apiUrl + "buyCharge",{
-//     Username:37068,
-//   Password:6182,
-//   Type:operator,
-//   amount:charge,
-//   cellNumber:ss,
-//   chargeType:direct
-//   })
-// .then(function (response) {
-// if (response.data.result == "true") {
+else{
+  let userObj = JSON.parse(response.data.message);
+console.log(userObj)
+  alert(userObj.description)
+}})
+.catch(function (error) {
+console.log(error);
+});
 
-// alert("موفقیت آمیز")
-
-// // console.log(userObj?.bundles
-//   // console.log(JSON.stringify(response.data.Data)?.bundles)
-
-// }
-// else{
-//   let userObj = JSON.parse(response.data.message);
-
-//   alert(userObj.description)
-
-// }})
-// .catch(function (error) {
-// console.log(error);
-// });
 }
+  }
 
-// const Times=(e)=>{
-//   e.preventDefault();
-//   // document.body.style.overflow = 'hidden';
-//   setTime(1)
-//   // window.scrollTo(0, parseInt(window.pageYOffset));
-// }
+
+
 
 const mainSlider=()=>{
   const axios = require("axios");
@@ -237,14 +180,41 @@ console.log(userObj?.bundles);
 
 
 }
+const Comparison=()=>{
+ var ss= phone.substring(0,4)
+ if(ss=="0935"||ss=="0936"||ss=="0937"||ss=="0938"||ss=="0939"||ss=="0901"||ss=="0902"||ss=="0903"||ss=="0904"||ss=="0905"||ss=="0933"||ss=="0930"||ss=="0900"||
+ ss=="0941"){
+   setOperator(0)
+ }
+ if(ss=="0920"||ss=="0921"||ss=="0922"||ss=="0923"){
+  setOperator(2)
+}
+if(ss=="0911"||ss=="0912"||ss=="0913"||ss=="0914"||ss=="0915"||ss=="0916"||ss=="0917"||ss=="0918"
+||ss=="0919"||ss=="0990"||ss=="0991"||ss=="0992"||ss=="0993"
+){
+  setOperator(1)
+}
+}
+const Comparison2=()=>{
+ var ss= phone2.substring(0,4)
+ if(ss=="0935"||ss=="0936"||ss=="0937"||ss=="0938"||ss=="0939"||ss=="0901"||ss=="0902"||ss=="0903"||ss=="0904"||ss=="0905"||ss=="0933"||ss=="0930"||ss=="0900"||
+ ss=="0941"){
+   setOperator(0)
+ }
+ if(ss=="0920"||ss=="0921"||ss=="0922"||ss=="0923"){
+  setOperator(2)
+}
+if(ss=="0911"||ss=="0912"||ss=="0913"||ss=="0914"||ss=="0915"||ss=="0916"||ss=="0917"||ss=="0918"
+||ss=="0919"||ss=="0990"||ss=="0991"||ss=="0992"||ss=="0993"
+){
+  setOperator(1)
+}
+}
 useEffect(()=>{
   mainSlider()
 
 },[operator])
-// const setPhone2(e.target.value)(e) => {
-//   console.log(e.target.value)
-//   setPhone2(e.target.value);
-// }
+
 
   return (
     <>
@@ -342,7 +312,7 @@ null
     <div className="d-flex">
     
     <div className="tabBox pdCustom">
-    <input id="phone"  onChange={(e)=>setPhone(e.target.value)}  />
+    <input id="phone"  onChange={(e)=>{setPhone(e.target.value);Comparison()}}  />
       <Phone/>
     
     </div>
@@ -356,7 +326,7 @@ null
         در صورت ترابرد اپراتور را تغییر دهید : 
       </p>
     </div>
-    <div className="d-flex over">
+    <div className="d-flex wrapD over">
     <Link onClick={()=>setOperator(0)}  to={""}className='text-link'>
     <div  className={operator==0?"tabBox w201 tabBoxActiveMain":"tabBox w201"} >
       <img src={Irancell}/>
@@ -382,7 +352,7 @@ null
       </p>
     </div>
     </Link>
-    <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
+    {/* <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
 
     <div  className={operator==3?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <img src={Taliya}/>
@@ -390,7 +360,7 @@ null
         تالیا
       </p>
     </div>
-    </Link>
+    </Link> */}
     </div>
   </div>
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block">
@@ -399,51 +369,13 @@ null
        مبلغ شارژ را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex over">
+    <div className="d-flex over wrapD">
     {/* <div className="tabBox pdLR15 w127 tabBoxActiveMain">
       <p className="tabBoxActive">
         1 هزارتومان
       </p>
     </div> */}
-        <Link onClick={()=>{setCharge("20000");
-    operator==0?
-    setVtp(28)
-    :operator==1?
-    setVtp(23)
-    :
-   setVtp(50)}}  to={""}className='text-link'>
-
-    <div  className={charge=="20000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-    <p className={charge=="20000"?"tabBoxActive":"tabBoxText"}>
-       2 هزارتومان
-      </p>
-    </div>
-    </Link>
-    <Link onClick={()=>{setCharge("50000"); operator==0?
-    setVtp(29)
-    :operator==1?
-    setVtp(22)
-    :setVtp(51)}} to={""}className='text-link'>
-
-    <div  className={charge=="50000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-      <p className={charge=="50000"?"tabBoxActive":"tabBoxText"}>
-        5 هزارتومان
-      </p>
-    </div>
-</Link>
-<Link onClick={()=>{setCharge("100000"); operator==0?
-    setVtp(30)
-    :operator==1?
-    setVtp(10)
-    :setVtp(52)}} to={""}className='text-link'>
-
-    <div  className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
-    <p className={charge=="100000"?"tabBoxActive":"tabBoxText"}>
-       10 هزارتومان
-      </p>
-    </div>
-    </Link>
-    <Link onClick={()=>{setCharge("200000"); operator==0?
+      <Link onClick={()=>{setCharge("200000"); operator==0?
     setVtp(31)
     :operator==1?
     setVtp(5)
@@ -452,6 +384,18 @@ null
     <div  className={charge=="200000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
     <p className={charge=="200000"?"tabBoxActive":"tabBoxText"}>
         20 هزارتومان
+      </p>
+    </div>
+    </Link>
+    <Link onClick={()=>{setCharge("100000"); operator==0?
+    setVtp(30)
+    :operator==1?
+    setVtp(10)
+    :setVtp(52)}} to={""}className='text-link'>
+
+    <div  className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    <p className={charge=="100000"?"tabBoxActive":"tabBoxText"}>
+       10 هزارتومان
       </p>
     </div>
     </Link>
@@ -471,6 +415,36 @@ null
     :
     null
     }
+      <Link onClick={()=>{setCharge("50000"); operator==0?
+    setVtp(29)
+    :operator==1?
+    setVtp(22)
+    :setVtp(51)}} to={""}className='text-link'>
+
+    <div  className={charge=="50000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+      <p className={charge=="50000"?"tabBoxActive":"tabBoxText"}>
+        5 هزارتومان
+      </p>
+    </div>
+</Link>
+        <Link onClick={()=>{setCharge("20000");
+    operator==0?
+    setVtp(28)
+    :operator==1?
+    setVtp(23)
+    :
+   setVtp(50)}}  to={""}className='text-link'>
+
+    <div  className={charge=="20000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
+    <p className={charge=="20000"?"tabBoxActive":"tabBoxText"}>
+       2 هزارتومان
+      </p>
+    </div>
+    </Link>
+  
+
+  
+  
     </div>
   </div>
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 d-res-block">
@@ -525,10 +499,10 @@ null
        شماره تلفن همراه خود را وارد کنید : 
       </p>
     </div>
-    <div className="d-flex over">
+    <div className="d-flex over ">
     
     <div className="tabBox pdCustom">
-    <input id="phone2" onChange={(e)=>setPhone2(e.target.value)}    />
+    <input id="phone2" onChange={(e)=>{setPhone2(e.target.value);Comparison2()}}    />
       <Phone/>
     
     </div>
@@ -540,8 +514,8 @@ null
         در صورت ترابرد اپراتور را تغییر دهید : 
       </p>
     </div>
-    <div className="d-flex over">
-    <Link onClick={()=>setOperator(0)}  to={""}className='text-link'>
+    <div className="d-flex over wrapD">
+    <Link onClick={()=>{setOperator(0);setSime(0);setTypeTime(2)}}  to={""}className='text-link'>
     <div  className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
       <img src={Irancell}/>
       <p className={operator==0?"tabBoxActive":"tabBoxText"}>
@@ -549,7 +523,7 @@ null
       </p>
     </div>
     </Link>
-    <Link onClick={()=>setOperator(1)} to={""}className='text-link'>
+    <Link onClick={()=>{setOperator(1);setSime(0);setTypeTime(0)}} to={""}className='text-link'>
     <div  className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Mci}/>
       <p className={operator==1?"tabBoxActive":"tabBoxText"}>
@@ -557,7 +531,7 @@ null
       </p>
     </div>
     </Link>
-    <Link onClick={()=>setOperator(2)}  to={""}className='text-link'>
+    <Link onClick={()=>{setOperator(2);setSime(0);setTypeTime(2)}}  to={""}className='text-link'>
 
     <div  className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Rightel}/>
@@ -566,7 +540,7 @@ null
       </p>
     </div>
     </Link>
-    <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
+    {/* <Link onClick={()=>setOperator(3)}  to={""}className='text-link'>
 
     <div  className={operator==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <img src={Taliya}/>
@@ -574,7 +548,7 @@ null
         تالیا
       </p>
     </div>
-    </Link>
+    </Link> */}
     </div>
   </div>
   <div className="d-des-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom d-res-block2">
@@ -583,8 +557,17 @@ null
        نوع سیم کارت خود را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex over">
-    <Link onClick={()=>setSime(0)}  to={""}className='text-link'>
+    <div className="d-flex over wrapD">
+    <Link onClick={()=>{setSime(0);
+    operator==0?
+    setTypeTime(2)
+
+    :
+    operator==1?
+    setTypeTime(0)
+    :
+    setTypeTime(2)
+    }}  to={""}className='text-link'>
 
     <div  className={sim==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
     <p className={sim==0?"tabBoxActive":"tabBoxText"}>
@@ -592,7 +575,16 @@ null
       </p>
     </div>
     </Link>
-    <Link onClick={()=>setSime(1)}  to={""}className='text-link'>
+    <Link onClick={()=>{setSime(1);
+    operator==0?
+    setTypeTime(1)
+
+    :
+    operator==1?
+    setTypeTime(1)
+    :
+    setTypeTime(1)
+    }}  to={""}className='text-link'>
 
     <div  className={sim==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
       <p className={sim==1?"tabBoxActive":"tabBoxText"}>
@@ -600,29 +592,37 @@ null
       </p>
     </div>
     </Link>
-    <Link onClick={()=>setSime(2)}  to={""}className='text-link'>
+    {
+      operator==2?
+      <Link onClick={()=>{setSime(2);setTypeTime(3)}}  to={""}className='text-link'>
 
-    <div  className={sim==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
-    <p className={sim==2?"tabBoxActive":"tabBoxText"}>
-       دیتا
-      </p>
-    </div>
-    </Link>
-    <Link onClick={()=>setSime(3)}  to={""}className='text-link'>
+      <div  className={sim==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+      <p className={sim==2?"tabBoxActive":"tabBoxText"}>
+         دیتا
+        </p>
+      </div>
+      </Link>
+      :
+      null
+    }
+  {
+      operator==0?
+    <Link onClick={()=>{setSime(3);setTypeTime(3)}}  to={""}className='text-link'>
 
     <div  className={sim==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
     <p className={sim==3?"tabBoxActive":"tabBoxText"}>
        TD-LTE
       </p>
     </div>
-    </Link>
+    </Link>:
+    null}
     </div>
   </div>
   <div className="row d-flex justify-content-start align-items-center pdtop30 pdbottom30">
    <Col md={7} className="chargeSliderDiv pd0">
-    <ChargeSlider bundle={bundle} setAmount={setAmount} setAmountMain={setAmountMain}  setBundle={setBundle} data={time==0?box.daily:time==1?box.weekly:time==2?box.monthly:time==3?box.annual:null}/>
+    <ChargeSlider operator={operator} bundle={bundle}typeTime={typeTime} setAmount={setAmount} setAmountMain={setAmountMain}  setBundle={setBundle} data={time==0?box.daily:time==1?box.weekly:time==2?box.monthly:time==3?box.annual:null}/>
    </Col>
-   <Col md={5} className="pd0 d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
+   <Col md={5} className="wrapD pd0 d-flex justify-content-start align-items-center pdtop30 pdbottom30 borderBottom">
  
    {/* <div onClick={()=>setTime(0)} onCa className="tabBox w97 margin2">
       <p className="tabBoxText">
@@ -655,7 +655,7 @@ null
 <Link onClick={()=>setTime(3)}  to={""}className='text-link'>
 
 <div  className={time==3?"tabBox w97 margin2 tabBoxActiveMain":"tabBox w97 margin2"}>
-<p >
+<p className={time==3?"tabBoxActive":"tabBoxText"}>
   بلند مدت
   </p>
 </div>

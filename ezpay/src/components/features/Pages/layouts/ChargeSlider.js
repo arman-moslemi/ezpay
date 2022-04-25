@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Logo from "../../assets/img/logo.png";
 import { Link } from 'react-router-dom';
-export default ({data,setBundle,setAmount,bundle,setAmountMain}) => {
+export default ({data,setBundle,setAmount,bundle,setAmountMain,typeTime,operator}) => {
   return (
     <Swiper
       className='chargeSlider'
@@ -23,7 +23,8 @@ export default ({data,setBundle,setAmount,bundle,setAmountMain}) => {
       // onSlideChange={() => console.log('slide change')}
     >
         {
-            data.map((item)=>{
+          operator!=1?
+            data.filter(t=>t.type==typeTime ).map((item)=>{
                 return(
 
                     <SwiperSlide>
@@ -47,7 +48,33 @@ export default ({data,setBundle,setAmount,bundle,setAmountMain}) => {
                  
                 )
             })
+            :
+            data.filter(t=>t.type==typeTime || t.type==2 ).map((item)=>{
+              return(
+
+                  <SwiperSlide>
+                    <Link onClick={()=>{setBundle(item.id);setAmount(item.billAmount);setAmountMain(item.amount)}} to={""} className='text-link'>
+                 <div  className={bundle==item.id?"chargeSliderBox tabBoxActiveMain":"chargeSliderBox"} >
+                   <p className={bundle==item.id?'boxTitle activeTitle':"boxTitle"}>
+                      {item.title}
+                   </p>
+                   {/* <p className='boxTitle activeTitle'>
+                       هفتگی 5 گیگابایت
+                   </p>
+                   <p className='boxTitle activeTitle'>
+                       از 2 تا 7 صبح
+                   </p> */}
+                   <p className={bundle==item.id?'boxPrice activeTitle':"boxPrice"}>
+                       {item.amount} ریال
+                   </p>
+                  </div>
+                  </Link>
+                 </SwiperSlide>
+               
+              )
+          })
         }
+
     </Swiper>
   );
 };
