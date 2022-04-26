@@ -326,7 +326,7 @@ null
         در صورت ترابرد اپراتور را تغییر دهید : 
       </p>
     </div>
-    <div className="d-flex wrapD over">
+    <div className="d-flex wrapD over wCenter">
     <Link onClick={()=>setOperator(0)}  to={""}className='text-link'>
     <div  className={operator==0?"tabBox w201 tabBoxActiveMain":"tabBox w201"} >
       <img src={Irancell}/>
@@ -369,7 +369,7 @@ null
        مبلغ شارژ را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex over wrapD">
+    <div className="d-flex over wrapD wCenter">
     {/* <div className="tabBox pdLR15 w127 tabBoxActiveMain">
       <p className="tabBoxActive">
         1 هزارتومان
@@ -475,7 +475,7 @@ null
   <div className="d-flex justify-content-end">
     {/* <Button onClick={()=>buyCharge()} className="payBtn"> */}
     <Button
-     disabled={phone?false:true} 
+     disabled={phone?false:direct=="DESIRE"?false:true} 
      onClick={()=>dargahCharge()} className="payBtn">
       پرداخت
     </Button>
@@ -514,9 +514,9 @@ null
         در صورت ترابرد اپراتور را تغییر دهید : 
       </p>
     </div>
-    <div className="d-flex over wrapD">
+    <div className="d-flex over wrapD wCenter">
     <Link onClick={()=>{setOperator(0);setSime(0);setTypeTime(2)}}  to={""}className='text-link'>
-    <div  className={operator==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"} >
+    <div  className={operator==0?"tabBox w201 tabBoxActiveMain":"tabBox w201"} >
       <img src={Irancell}/>
       <p className={operator==0?"tabBoxActive":"tabBoxText"}>
         ایرانسل
@@ -524,7 +524,7 @@ null
     </div>
     </Link>
     <Link onClick={()=>{setOperator(1);setSime(0);setTypeTime(0)}} to={""}className='text-link'>
-    <div  className={operator==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={operator==1?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <img src={Mci}/>
       <p className={operator==1?"tabBoxActive":"tabBoxText"}>
        همراه اول
@@ -533,7 +533,7 @@ null
     </Link>
     <Link onClick={()=>{setOperator(2);setSime(0);setTypeTime(2)}}  to={""}className='text-link'>
 
-    <div  className={operator==2?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={operator==2?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <img src={Rightel}/>
       <p className={operator==2?"tabBoxActive":"tabBoxText"}>
         رایتل
@@ -557,7 +557,7 @@ null
        نوع سیم کارت خود را انتخاب کنید : 
       </p>
     </div>
-    <div className="d-flex over wrapD">
+    <div className="d-flex over wrapD wCenter">
     <Link onClick={()=>{setSime(0);
     operator==0?
     setTypeTime(2)
@@ -569,7 +569,7 @@ null
     setTypeTime(2)
     }}  to={""}className='text-link'>
 
-    <div  className={sim==0?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={sim==0?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
     <p className={sim==0?"tabBoxActive":"tabBoxText"}>
         دائمی
       </p>
@@ -586,7 +586,7 @@ null
     setTypeTime(1)
     }}  to={""}className='text-link'>
 
-    <div  className={sim==1?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={sim==1?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
       <p className={sim==1?"tabBoxActive":"tabBoxText"}>
        اعتباری
       </p>
@@ -609,7 +609,7 @@ null
       operator==0?
     <Link onClick={()=>{setSime(3);setTypeTime(3)}}  to={""}className='text-link'>
 
-    <div  className={sim==3?"tabBox w200 tabBoxActiveMain":"tabBox w200"}>
+    <div  className={sim==3?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
     <p className={sim==3?"tabBoxActive":"tabBoxText"}>
        TD-LTE
       </p>

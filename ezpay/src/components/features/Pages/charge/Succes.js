@@ -74,8 +74,8 @@ const Success = () => {
     console.log(userObj.transferInfo.transactionNumber)
     setTrnumber(userObj.transferInfo.transactionNumber)
     setTrans(userObj.transferInfo.transactionNumber)
-    localStorage.setItem("direct","")
-    localStorage.setItem("vtp","")
+    // localStorage.setItem("direct","")
+    // localStorage.setItem("vtp","")
     }
     else{
       let userObj = JSON.parse(response.data.message);
@@ -106,9 +106,9 @@ const Success = () => {
     setTrnumber(userObj.transferInfo.transactionNumber)
     setTrans(userObj.transferInfo.transactionNumber)
 
-    localStorage.setItem("bundle","")
-    localStorage.setItem("direct","")
-    localStorage.setItem("vtp","")
+    // localStorage.setItem("bundle","")
+    // localStorage.setItem("direct","")
+    // localStorage.setItem("vtp","")
     
     }
     else{
@@ -175,11 +175,7 @@ const Success = () => {
             })
           .then(function (response) {
           if (response.data.result == "true") {
-              localStorage.setItem("opr","")
-              localStorage.setItem("direct","")
-              localStorage.setItem("phone","")
-              localStorage.setItem("type","")
-              localStorage.setItem("amount","")
+            
           // alert("موفقیت آمیز")
           verify()
 

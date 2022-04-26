@@ -551,6 +551,9 @@ padding: 20px 0px;
     }
 }
 @media screen and (max-width:500px){
+    .w127{
+        width: 110px !important;
+    }
     .footerIcon{
         width: 40px !important;
         height: 40px !important;
@@ -628,6 +631,9 @@ padding: 20px 0px;
   font-size: 14px !important;
   background-color: #fff;
       border: none;
+    }
+    .wCenter{
+        justify-content: center !important;
     }
 }
 .text-link {
