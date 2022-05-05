@@ -133,7 +133,7 @@ const Success = () => {
           bundleId:localStorage.getItem("bundle"),
           amount:localStorage.getItem("amount"),
           cellNumber:localStorage.getItem("phone"),
-          fact:localStorage.getItem("fact"),
+          // fact:localStorage.getItem("fact"),
          
           })
         .then(function (response) {

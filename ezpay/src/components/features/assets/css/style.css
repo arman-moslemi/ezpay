@@ -291,7 +291,7 @@ justify-content: center;
       margin-left: 10px;
   }
   .pdCustom input:focus-visible{
-      border: 1px solid #f4f4f4 !important;
+    outline: #dbdbdb auto 0.1px !important;
   }
   .w200{
     width: 200px;
@@ -302,6 +302,7 @@ justify-content: center;
   }
   .tabBoxActiveMain{
     box-shadow: 0px 0px 15px rgba(22, 43, 117, 0.5) !important;
+    border: 1px solid #162B75;
   }
   .fontUnset{
       font-family: unset !important;
@@ -311,7 +312,7 @@ justify-content: center;
   }
   .chargeSlider{
       width: 100% !important;
-      padding: 15px !important;
+      padding: 25px !important;
   }
   .chargeSliderDiv{
      
@@ -833,4 +834,18 @@ padding: 15px;
     font-size: 14px;
     text-align: center;
     margin-bottom: 20px;
+}
+.no-spin::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+.no-spin {
+    -moz-appearance:textfield !important;
+}
+.swiper-button-prev, .swiper-rtl .swiper-button-next{
+    left: 0px !important;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev{
+    left: 0px !important;
 }

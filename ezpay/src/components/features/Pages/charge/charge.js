@@ -312,7 +312,7 @@ null
     <div className="d-flex">
     
     <div className="tabBox pdCustom">
-    <input id="phone"  onChange={(e)=>{setPhone(e.target.value);Comparison()}}  />
+    <input id="phone" type={"number"} class="no-spin"  onChange={(e)=>{setPhone(e.target.value);Comparison()}}  />
       <Phone/>
     
     </div>
@@ -502,7 +502,7 @@ null
     <div className="d-flex over ">
     
     <div className="tabBox pdCustom">
-    <input id="phone2" onChange={(e)=>{setPhone2(e.target.value);Comparison2()}}    />
+    <input id="phone2" class="no-spin" type={"number"} onChange={(e)=>{setPhone2(e.target.value);Comparison2()}}    />
       <Phone/>
     
     </div>
