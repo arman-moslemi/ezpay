@@ -131,7 +131,7 @@ if (response.data.result == "true") {
 localStorage.setItem("fact",response.data.FactorNumber)
 
 let userObj = JSON.parse(response.data.Data);
-window.open(userObj.paymentLink);
+window.location.replace(userObj.paymentLink);
 
 }
 else{
@@ -312,7 +312,7 @@ null
     <div className="d-flex">
     
     <div className="tabBox pdCustom">
-    <input id="phone" type={"number"} class="no-spin"  onChange={(e)=>{setPhone(e.target.value);Comparison()}}  />
+    <input autocomplete="off" id="phone" type={"number"} class="no-spin"  onChange={(e)=>{setPhone(e.target.value);Comparison()}}  />
       <Phone/>
     
     </div>
@@ -427,6 +427,11 @@ null
       </p>
     </div>
 </Link>
+{
+  operator==1?
+null
+  :
+
         <Link onClick={()=>{setCharge("20000");
     operator==0?
     setVtp(28)
@@ -441,6 +446,7 @@ null
       </p>
     </div>
     </Link>
+}
   
 
   
@@ -462,6 +468,9 @@ null
       </p>
     </div>
     </Link>
+{
+  operator==0?
+
     <Link onClick={()=>setChargeType(1)}  to={""}className='text-link'>
 
     <div className={chargeType==1?"tabBox w201 tabBoxActiveMain":"tabBox w201"}>
@@ -470,6 +479,9 @@ null
       </p>
     </div>
     </Link>
+  :
+  null
+}
     </div>
   </div>
   <div className="d-flex justify-content-end">
@@ -502,7 +514,7 @@ null
     <div className="d-flex over ">
     
     <div className="tabBox pdCustom">
-    <input id="phone2" class="no-spin" type={"number"} onChange={(e)=>{setPhone2(e.target.value);Comparison2()}}    />
+    <input autocomplete="off" id="phone2" class="no-spin" type={"number"} onChange={(e)=>{setPhone2(e.target.value);Comparison2()}}    />
       <Phone/>
     
     </div>

@@ -233,14 +233,19 @@ const Success = () => {
         }
         useEffect(()=>{
             console.log(localStorage.getItem("type"))
+            console.log(8276)
+            console.log(statusCode)
             // verify()
-            if(  localStorage.getItem("type")=="net"){
-              // buyInternet(userObj.transferInfo.transactionNumber)
-              buyInternet()
-           }
-           else{
-  
-               buyCharge()
+           if( statusCode==0){
+
+             if(  localStorage.getItem("type")=="net"){
+               // buyInternet(userObj.transferInfo.transactionNumber)
+               buyInternet()
+            }
+            else{
+   
+                buyCharge()
+            }
            }
    
           },[])
@@ -371,6 +376,11 @@ pin?
                   {localStorage.getItem("phone")}
                                     </p>
                 </div>
+                {
+                  localStorage.getItem("type")=="net"?
+null
+                  :
+
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd">
                   <p className="tableText ta-right">
                     نوع شارژ
@@ -387,6 +397,7 @@ pin?
                   }
                   
                 </div>
+                }
                 {
                     pin?
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
