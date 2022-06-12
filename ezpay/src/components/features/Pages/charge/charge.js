@@ -1,5 +1,5 @@
 
-import { Container ,Col, Button,Row} from "react-bootstrap";
+import { Container ,Col, Button,Row ,Spinner} from "react-bootstrap";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import Questions from "../layouts/Questions";
@@ -37,8 +37,11 @@ const [charge,setCharge]=useState("")
 const [vtp,setVtp]=useState(0)
 const [chargeType,setChargeType]=useState(0)
 const [typeTime,setTypeTime]=useState(2)
+const [loadCharge,setloadCharge]=useState(false)
+const [loadNet,setloadNet]=useState(false)
 
 const dargahCharge=()=>{
+  setloadCharge(true)
   console.log(document.getElementById("phone")?.value)
   var ss=""
    ss=direct=="DIRECT"?document.getElementById("phone")?.value:"";
@@ -53,6 +56,8 @@ console.log(charge)
 console.log(operator)
 if( charge==""){
   alert("لطفا همه موارد را انتخاب کنید")
+  setloadCharge(false)
+
 }
 else{
 
@@ -76,16 +81,20 @@ if (response.data.result == "true") {
 // alert("موفقیت آمیز")
 localStorage.setItem("fact",response.data.FactorNumber)
 
+setloadCharge(false)
 let userObj = JSON.parse(response.data.Data);
 console.log(77)
 console.log(userObj)
 console.log(userObj.paymentLink)
 window.open(userObj.paymentLink);
+
 }
 else{
   let userObj = JSON.parse(response.data.message);
 console.log(userObj)
   alert(userObj.description)
+  setloadCharge(false)
+
 }})
 .catch(function (error) {
 console.log(error);
@@ -94,6 +103,8 @@ console.log(error);
   }
   
 const dargahNet=()=>{
+  setloadNet(true)
+
   console.log(document.getElementById("phone2").value)
   console.log(amount)
   console.log(phone)
@@ -108,6 +119,8 @@ localStorage.setItem("amount",amount)
 localStorage.setItem("amountMain",amountMain)
 if(  amount==0 || bundle==0){
   alert("لطفا همه موارد را انتخاب کنید")
+  setloadNet(false)
+
 }
 else{
   const axios = require("axios");
@@ -132,12 +145,15 @@ localStorage.setItem("fact",response.data.FactorNumber)
 
 let userObj = JSON.parse(response.data.Data);
 window.location.replace(userObj.paymentLink);
+setloadNet(false)
 
 }
 else{
   let userObj = JSON.parse(response.data.message);
 console.log(userObj)
   alert(userObj.description)
+  setloadNet(false)
+
 }})
 .catch(function (error) {
 console.log(error);
@@ -190,7 +206,7 @@ const Comparison=()=>{
   setOperator(2)
 }
 if(ss=="0911"||ss=="0912"||ss=="0913"||ss=="0914"||ss=="0915"||ss=="0916"||ss=="0917"||ss=="0918"
-||ss=="0919"||ss=="0990"||ss=="0991"||ss=="0992"||ss=="0993"
+||ss=="0919"||ss=="0990"||ss=="0991"||ss=="0992"||ss=="0993"||ss=="0910"
 ){
   setOperator(1)
 }
@@ -205,7 +221,7 @@ const Comparison2=()=>{
   setOperator(2)
 }
 if(ss=="0911"||ss=="0912"||ss=="0913"||ss=="0914"||ss=="0915"||ss=="0916"||ss=="0917"||ss=="0918"
-||ss=="0919"||ss=="0990"||ss=="0991"||ss=="0992"||ss=="0993"
+||ss=="0919"||ss=="0990"||ss=="0991"||ss=="0992"||ss=="0993"||ss=="0910"
 ){
   setOperator(1)
 }
@@ -489,7 +505,15 @@ null
     <Button
      disabled={phone?false:direct=="DESIRE"?false:true} 
      onClick={()=>dargahCharge()} className="payBtn">
-      پرداخت
+     پرداخت
+     {
+      loadCharge?
+     <Spinner animation="border" role="status" size="sm" style={{marginRight:10}}>
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
+      :
+      null
+     }
     </Button>
   </div>
 </div>
@@ -682,6 +706,14 @@ null
 
     className="payBtn">
       پرداخت
+      {
+      loadNet?
+     <Spinner animation="border" role="status" size="sm" style={{marginRight:10}}>
+  <span className="visually-hidden">Loading...</span>
+</Spinner>
+      :
+      null
+     }
     </Button>
   </div>
 </div>
