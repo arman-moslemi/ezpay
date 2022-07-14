@@ -161,6 +161,8 @@ const Success = () => {
         const buyCharge=(tr)=>{
           const axios = require("axios");
           console.log(1548)
+          console.log(localStorage.getItem("direct"))
+          
           if(localStorage.getItem("direct")!="DESIRE"){
             axios
             .post(apiUrl + "buyCharge",{
@@ -219,8 +221,10 @@ const Success = () => {
           }
           else{
             let userObj = JSON.parse(response.data.Data);
-            reverse()
+            console.log(8989898989)
             setError(true)
+
+            reverse()
 
             alert(userObj.description)
           
@@ -237,7 +241,19 @@ const Success = () => {
             console.log(statusCode)
             // verify()
            if( statusCode==0){
+            const script = document.createElement("script");
 
+            script.src = "https://analytics.affili.ir/scripts/affili-v2.js";
+            script.async = true;
+        
+            document.body.appendChild(script);
+            const script2 = document.createElement("script");
+
+            const scriptText = document.createTextNode(" window.affiliData = window.affiliData || [];function affili(){affiliData.push(arguments);}affili('create', 'affilioGz6G0OduHXY3996DsAYlXWulXyrtCHhcw');affili('conversion', "+FactorNumber+", "+amount+", {coupon: null,products: [{sku:'شارژ',unit_price:"+amount+",quantity:1,total_price:"+amount+"}],});");
+      
+            script2.appendChild(scriptText);
+            document.head.appendChild(script2);
+        
              if(  localStorage.getItem("type")=="net"){
                // buyInternet(userObj.transferInfo.transactionNumber)
                buyInternet()
@@ -401,12 +417,7 @@ null
                 {
                     pin?
                 <div className="d-flex align-items-center pr-1 pl-1 justify-content-between rowPd gBack">
-                  {/* <p className="tableText ta-right">
-                    زمان
-                  </p>
-                  <p className="tableText ta-left">
-                    28/01/01 - 17:28
-                  </p> */}
+
                   <p className="tableText ta-right">
                   کد شارژ
                   </p>

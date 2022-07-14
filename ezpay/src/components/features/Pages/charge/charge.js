@@ -41,6 +41,13 @@ const [loadCharge,setloadCharge]=useState(false)
 const [loadNet,setloadNet]=useState(false)
 
 const dargahCharge=()=>{
+  // ga('send', 'event', {
+  //   eventCategory: 'Outbound Link',
+  //   eventAction: 'click',
+  //   eventLabel: event.target.href,
+  //   transport: 'beacon'
+  // });
+ 
   setloadCharge(true)
   console.log(document.getElementById("phone")?.value)
   var ss=""
@@ -86,7 +93,8 @@ let userObj = JSON.parse(response.data.Data);
 console.log(77)
 console.log(userObj)
 console.log(userObj.paymentLink)
-window.open(userObj.paymentLink);
+// window.open(userObj.paymentLink);
+window.location.replace(userObj.paymentLink);
 
 }
 else{
@@ -406,7 +414,7 @@ null
     <Link onClick={()=>{setCharge("100000"); operator==0?
     setVtp(30)
     :operator==1?
-    setVtp(10)
+    setVtp(7)
     :setVtp(52)}} to={""}className='text-link'>
 
     <div  className={charge=="100000"?"tabBox pdLR15 w127 tabBoxActiveMain":"tabBox pdLR15 w127"}>
