@@ -5,13 +5,13 @@ import ChargeInner from '../components/features/Pages/charge/chargeInner';
 import Success from '../components/features/Pages/charge/Succes';
 const MainRoutes = (props) => {
 	return (
-  <BrowserRouter basename="/charge">
+  <BrowserRouter basename="/charge/success">
 			<Routes>
 				<Route
 					exact
 					path='/'
 					name='charge'
-					element={<Charge/>}
+					element={<Success/>}
 				/></Routes>
 				<Routes>
 				<Route

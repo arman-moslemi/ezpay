@@ -74,6 +74,8 @@ const Success = () => {
     console.log(userObj.transferInfo.transactionNumber)
     setTrnumber(userObj.transferInfo.transactionNumber)
     setTrans(userObj.transferInfo.transactionNumber)
+    localStorage.setItem("amount","")
+
     // localStorage.setItem("direct","")
     // localStorage.setItem("vtp","")
     }
@@ -105,6 +107,7 @@ const Success = () => {
     let userObj = JSON.parse(response.data.Data);
     setTrnumber(userObj.transferInfo.transactionNumber)
     setTrans(userObj.transferInfo.transactionNumber)
+    localStorage.setItem("amount","")
 
     // localStorage.setItem("bundle","")
     // localStorage.setItem("direct","")
